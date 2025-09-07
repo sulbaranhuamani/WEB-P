@@ -1,0 +1,96 @@
+/* Fuente base */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f2f9ff;      /* azul muy claro */
+    color: #333;
+}
+
+/* ---------- Header ---------- */
+header {
+    background: #0077cc;       /* azul corporativo */
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    .perfil{
+        width: 160px;
+        height: 160px;
+    }
+}
+
+h1 { margin: 0; }
+.subtitulo { font-size: 1.1em; }
+
+/* ---------- Secciones ---------- */
+section {
+    padding: 30px 20px;
+    max-width: 700px;
+    margin: auto;
+}
+
+h2 { color: #0077cc; }
+
+/* lista sin viñetas estándar */
+ul { list-style: none; padding-left: 0; }
+ul li::before { content: "✔️"; margin-right: 8px; }
+
+/* ---------- Botones y formulario ---------- */
+.boton {
+    display: inline-block;
+    background: #0077cc;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.boton:hover { background: #005fa3; }
+
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    background: #0077cc;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+button:hover { background: #005fa3; }
+
+/* ---------- Redes sociales ---------- */
+.redes img {
+    width: 30px;
+    margin: 12px 6px;
+    transition: transform .2s;
+}
+.redes img:hover { transform: scale(1.1); }
+
+/* ---------- Footer ---------- */
+footer {
+    background: #eee;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}

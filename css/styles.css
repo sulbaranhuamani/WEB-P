@@ -15,6 +15,7 @@ header {
     padding: 40px 20px;
 }
 
+/*circulo */
 .perfil {
     width: 120px;
     height: 120px;
@@ -34,6 +35,84 @@ header {
 h1 { margin: 0; }
 .subtitulo { font-size: 1.1em; }
 
+.nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* nombre a la izq y pill al centro */
+    padding: 14px 20px;
+}
+
+.brand { font-weight: 600; font-size: 1.1rem; }
+
+.nav { position: relative; }
+.brand { position: absolute; left: 20px; }
+.pill { margin: 0 auto; }
+
+
+/* ===== Header responsive fix ===== */
+/* Contenedor principal del nav (fondo + blur + posición fija arriba) */
+.nav-wrap {
+    position: sticky; top:0; z-index:50;
+    backdrop-filter: saturate(1.15) blur(10px);
+    background: linear-gradient(to bottom, #ffffff, #0077cc 90%);
+    border-bottom: 1px solid #0077cc; /*borde de nosotros-contacto */
+}
+/* Estructura del nav: usa grid para alinear nombre y menú */
+.nav{
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center;
+    position: relative;               /* clave para centrar el pill */
+    padding: 12px 16px;
+}
+/* Estilo del texto con tu nombre (lado izquierdo) */
+.brand{
+    position: absolute; left: 12px; top: 50%;
+    transform: translateY(-50%);      /* fija el nombre a la izquierda */
+    font-weight: 600; letter-spacing: .2px;
+    color: #000000;
+}
+/* Contenedor del menú tipo "pill" (fondo redondeado + links) */
+.pill{
+    margin: 0 auto;                   /* centra el pill */
+    display: flex; gap: 6px; padding: 6px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 999px;
+}
+/* Estilo de los enlaces del menú */
+.pill a{ /*css de las letras */
+    text-decoration: none; /* quita el subrayado */
+    padding: 8px 14px; /* espacio interno: arriba/abajo, izquierda/derecha */
+    border-radius: 999px; /* redondeado máximo (píldora) */
+    /* 🎨 Colores y texto */
+    color: #000;
+    font-weight: 600;
+    font-size: .95rem;
+}
+/* Estilo del enlace activo (el que indica la sección actual) */
+.pill a.active{ background: rgba(255,255,255,.12); color: #e7e7ea; }
+
+
+/* ===== Hero tipografía y contenedor ===== */
+.hero{ max-width: 1100px; margin: 44px auto 90px; padding: 0 16px; }
+.title{ font-size: clamp(2rem, 7vw, 4.5rem); line-height: 1.05; }
+
+/* ===== Ajustes móviles ===== */
+@media (max-width: 680px){
+    .nav{ padding: 10px 12px; }
+    .brand{ left: 10px; font-size: 0.98rem; }
+    .pill{ gap: 4px; padding: 4px; }
+    .pill a{ padding: 7px 12px; font-size: .9rem; }
+    .hero{ margin-top: 28px; }                 /* evita que el nav tape el hero */
+}
+
+/* Evita scroll lateral por sombras/gradientes */
+html,body{ overflow-x: hidden; }
+
+
+
 /* ---------- Secciones ---------- */
 section {
     padding: 30px 20px;
@@ -47,50 +126,6 @@ h2 { color: #0077cc; }
 ul { list-style: none; padding-left: 0; }
 ul li::before { content: "✔️"; margin-right: 8px; }
 
-/* ---------- Botones y formulario ---------- */
-.boton {
-    display: inline-block;
-    background: #0077cc;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-.boton:hover { background: #005fa3; }
 
-form {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-input, textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-button {
-    background: #0077cc;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-}
-button:hover { background: #005fa3; }
 
-/* ---------- Redes sociales ---------- */
-.redes img {
-    width: 30px;
-    margin: 12px 6px;
-    transition: transform .2s;
-}
-.redes img:hover { transform: scale(1.1); }
 
-/* ---------- Footer ---------- */
-footer {
-    background: #eee;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-}

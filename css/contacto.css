@@ -1,0 +1,75 @@
+:root{
+    --purple: #3a0b6d; /* fondo del bloque social */
+    --purple-600: #5b21b6;
+    --purple-300: #c4b5fd;
+    --surface: #ffffff; /* tarjetas */
+    --ink: #0f172a; /* texto principal */
+    --muted: #475569; /* texto secundario */
+    --border: #e5e7eb;
+    --accent: #0ea5e9; /* botones (celeste) */
+    --accent-dark: #0284c7;
+}
+
+
+/* Hero superior */
+.contact-hero{
+    text-align:center;
+    padding: clamp(48px, 8vw, 80px) 16px 28px;
+    background: linear-gradient(to bottom, #ffffff 0%, #e0f2fe 100%);
+    border-bottom: 1px solid #dbeafe;
+}
+.contact-hero h1{
+    margin:0 0 8px;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 800;
+    color: var(--ink);
+}
+.contact-hero p{ margin:0; color: var(--muted); }
+
+
+/* Layout principal */
+.contact-grid{
+    display:grid; gap:22px;
+    grid-template-columns: 1fr;
+    max-width: 1080px; margin: 22px auto; padding: 0 16px 48px;
+}
+@media (min-width: 900px){
+    .contact-grid{ grid-template-columns: 1.25fr .75fr; }
+}
+
+
+/* Tarjetas */
+.card{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(18px, 3vw, 26px);
+    box-shadow: 0 6px 24px rgba(2,6,23,.06);
+}
+.card h2{ margin: 0 0 12px; font-size: 1.2rem; }
+
+
+/* Formulario */
+.field{ display:block; margin-bottom: 14px; }
+.field > span{
+    display:block; font-weight: 600; margin-bottom: 6px; color: var(--ink);
+}
+input[type="text"], input[type="email"], textarea{
+    width:100%; padding: 12px 14px; font-size: 1rem;
+    border:1px solid var(--border); border-radius: 10px; outline: none;
+    background:#fff;
+}
+input:focus, textarea:focus{ border-color: var(--accent); box-shadow: 0 0 0 4px rgba(14,165,233,.12); }
+.error{ color:#b91c1c; min-height: 18px; display:block; }
+
+
+/* Botón principal */
+.btn-primary{
+    display:inline-block;
+    background: var(--accent);
+    color:#fff; font-weight:700; border:0;
+    padding:12px 18px; border-radius:10px; cursor:pointer;
+    transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+}
+.btn-primary:hover{ transform: translateY(-1px); background: var(--accent-dark); box-shadow: 0 12px 24px rgba(2,132,199,.25); }
+.form-note{ color: var(--muted); font-size:.95rem; margin-top:8px; }

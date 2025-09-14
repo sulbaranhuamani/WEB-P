@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto — Sulbaran Huamani</title>
+
+
+    <!-- CSS global (tu archivo actual) -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- CSS específico de la página de contacto -->
+    <link rel="stylesheet" href="css/contacto.css">
+</head>
+<body>
+<!-- Nav reutilizado (simple) -->
+<header class="nav-wrap">
+    <nav class="nav">
+        <div class="brand"><a href="index.html">Sulbaran Huamani</a></div>
+        <div class="pill">
+            <a href="index.html#work">about me</a>
+            <a href="index.html#projects">projects</a>
+            <a class="active" href="contact.html" aria-current="page">contacto</a>
+        </div>
+    </nav>
+</header>
+
+
+<!-- Hero de contacto -->
+<section class="contact-hero">
+    <h1>Hablemos 👋</h1>
+    <p>¿Una idea, proyecto o colaboración? Escríbeme por el formulario, correo o WhatsApp.</p>
+</section>
+
+
+<!-- Contenido: columna izquierda (form) + derecha (info) -->
+<main class="contact-grid">
+    <!-- Formulario -->
+    <section class="card">
+        <h2>Envíame un mensaje</h2>
+
+
+        <!-- Opción 1: Formspree (recomendado). Reemplaza TU_ENDPOINT abajo -->
+        <form id="contactForm" action="https://formspree.io/f/TU_ENDPOINT" method="POST" novalidate>
+            <!-- Opción 2 (fallback): mailto (borra action de arriba y descomenta esta) -->
+            <!-- <form id="contactForm" action="mailto:tu-correo@dominio.com" method="POST" enctype="text/plain" novalidate> -->
+
+
+            <label class="field">
+                <span>Nombre</span>
+                <input type="text" name="name" required placeholder="Tu nombre" autocomplete="name">
+                <small class="error" aria-live="polite"></small>
+            </label>
+
+
+            <label class="field">
+                <span>Email</span>
+                <input type="email" name="email" required placeholder="tucorreo@email.com" autocomplete="email">
+                <small class="error" aria-live="polite"></small>
+            </label>
+
+
+            <label class="field">
+                <span>Mensaje</span>
+                <textarea name="message" rows="5" required placeholder="Cuéntame en 2–3 líneas…"></textarea>
+                <small class="error" aria-live="polite"></small>
+            </label>
+
+
+            <button type="submit" class="btn-primary">Enviar</button>
+            <p class="form-note">Respuesta usual: 24–48 h.</p>
+        </form>
+    </section>
+
+
+    <!-- Información y redes -->
+    <aside class="card">
+        <h2>Contacto directo</h2>
+        <ul class="list">
+            <li><strong>Email:</strong> <a href="mailto:tu-correo@dominio.com">sulbaranhuamani@gmail.com</a></li>
+            <li><strong>WhatsApp:</strong> <a class="wa" href="https://wa.me/51TU_NUMERO?text=906892853" target="_blank" rel="noopener">Escríbeme por WhatsApp</a></li>
+            <li><strong>Ubicación:</strong> Lima, Perú</li>
+</html>

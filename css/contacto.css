@@ -1,15 +1,14 @@
 :root{
-    --purple: #3a0b6d; /* fondo del bloque social */
+    --purple: #3a0b6d;         /* fondo del bloque social */
     --purple-600: #5b21b6;
     --purple-300: #c4b5fd;
-    --surface: #ffffff; /* tarjetas */
-    --ink: #0f172a; /* texto principal */
-    --muted: #475569; /* texto secundario */
+    --surface: #ffffff;        /* tarjetas */
+    --ink: #0f172a;            /* texto principal */
+    --muted: #475569;          /* texto secundario */
     --border: #e5e7eb;
-    --accent: #0ea5e9; /* botones (celeste) */
+    --accent: #0ea5e9;         /* botones (celeste) */
     --accent-dark: #0284c7;
 }
-
 
 /* Hero superior */
 .contact-hero{
@@ -26,7 +25,6 @@
 }
 .contact-hero p{ margin:0; color: var(--muted); }
 
-
 /* Layout principal */
 .contact-grid{
     display:grid; gap:22px;
@@ -37,7 +35,6 @@
     .contact-grid{ grid-template-columns: 1.25fr .75fr; }
 }
 
-
 /* Tarjetas */
 .card{
     background: var(--surface);
@@ -47,7 +44,6 @@
     box-shadow: 0 6px 24px rgba(2,6,23,.06);
 }
 .card h2{ margin: 0 0 12px; font-size: 1.2rem; }
-
 
 /* Formulario */
 .field{ display:block; margin-bottom: 14px; }
@@ -62,7 +58,6 @@ input[type="text"], input[type="email"], textarea{
 input:focus, textarea:focus{ border-color: var(--accent); box-shadow: 0 0 0 4px rgba(14,165,233,.12); }
 .error{ color:#b91c1c; min-height: 18px; display:block; }
 
-
 /* Botón principal */
 .btn-primary{
     display:inline-block;
@@ -73,3 +68,35 @@ input:focus, textarea:focus{ border-color: var(--accent); box-shadow: 0 0 0 4px 
 }
 .btn-primary:hover{ transform: translateY(-1px); background: var(--accent-dark); box-shadow: 0 12px 24px rgba(2,132,199,.25); }
 .form-note{ color: var(--muted); font-size:.95rem; margin-top:8px; }
+
+/* Lista de contacto */
+.list{ list-style:none; padding:0; margin:0 0 14px; color: var(--ink); }
+.list li{ margin: 8px 0; }
+.list a{ color: var(--accent-dark); text-decoration: none; }
+.list a:hover{ text-decoration: underline; }
+.wa{ font-weight:700; }
+
+/* Bloque Social tipo ejemplo (fondo morado e íconos blancos redondos) */
+.social-block{
+    background: var(--purple);
+    color: var(--purple-300);
+    padding: 18px; border-radius: 16px; margin-top: 16px;
+}
+.social-block h3{ margin: 0 0 12px; font-weight: 700; }
+.social-row{ display:flex; gap: 12px; flex-wrap: wrap; }
+
+.ico{
+    width:44px; height:44px; border-radius:999px;
+    background:#fff; display:grid; place-items:center;
+    box-shadow: 0 6px 16px rgba(0,0,0,.18);
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.ico svg{ width:22px; height:22px; fill: var(--purple-600); }
+.ico:hover{ transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,.28); background:#f8fafc; }
+
+/* Toast */
+.toast{
+    position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+    background:#111827; color:#fff; padding:10px 14px; border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.35); font-weight:600;
+}

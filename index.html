@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sulbaran Huamani — Inicio</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<!-- ===== NAV ===== -->
+<header class="nav-wrap">
+    <nav class="nav">
+        <div class="brand"><a href="index.html">Sulbaran Huamani</a></div>
+        <div class="pill">
+            <a href="#work" class="active">About me</a>
+            <a href="proyectos.html">Projects</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+    </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="home">
+    <div class="container">
+        <img class="portrait" src="img/FP0.png" alt="Foto de Sulbaran Huamani" />
+        <h1 class="title">Hola, soy Sulbaran Huamani.</h1>
+        <p class="subtitle">Estudiante | Emprendedor | Futuro presidente <small>PE</small></p>
+    </div>
+</header>
+
+<!-- ===== SOBRE MÍ ===== -->
+<section class="about" id="work">
+    <div class="container">
+        <h2>Sobre mí</h2>
+        <p class="lead">Me entusiasman los sistemas, la economía, medicina y crear proyectos que aporten valor real.</p>
+    </div>
+</section>
+
+<!-- ===== CTA A PROYECTOS (opcional) ===== -->
+<section class="cta">
+    <div class="container">
+        <div class="cta-card">
+            <h3>¿Quieres ver lo que estoy construyendo?</h3>
+            <a class="btn-primary" href="proyectos.html">Ver proyectos</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER SIMPLE ===== -->
+<footer class="footer">
+    <div class="container">
+        <p>© <span id="year"></span> Sulbaran Huamani — Lima, Perú</p>
+    </div>
+</footer>
+
+<script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

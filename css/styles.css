@@ -1,131 +1,46 @@
-/* Fuente base */
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f2f9ff;      /* azul muy claro */
-    color: #333;
+/* ===== Reset mínimo y base ===== */
+html{ scroll-behavior:smooth; }
+*{ box-sizing:border-box; }
+body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color:#0f172a; background:#f1f5f9; }
+a{ color:inherit; }
+.container{ max-width:1100px; margin:0 auto; padding:0 16px; }
+
+/* ===== NAV global consistente ===== */
+.nav-wrap{ background: linear-gradient(to bottom, #ffffff 0%, #4a9de0 88%); border-bottom:1px solid #cfe6fb; }
+.nav{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:8px; height:64px; }
+.brand{ justify-self:start; font-weight:800; }
+.brand a{ text-decoration:none; }
+.pill{ justify-self:center; display:flex; gap:6px; padding:4px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); border-radius:999px; backdrop-filter:saturate(140%) blur(4px); }
+.pill a{ text-decoration:none; padding:8px 14px; border-radius:999px; font-weight:600; color:#1f2937; }
+.pill a.active{ background:rgba(255,255,255,.22); }
+.pill a:hover{ background:rgba(255,255,255,.14); }
+
+/* Móvil: oculta la marca y centra el pill */
+@media (max-width:480px){
+    .brand{ display:none; }
+    .nav{ grid-template-columns:1fr; }
+    .pill{ justify-self:center; }
 }
 
-/* ---------- Header ---------- */
-header {
-    background: #0077cc;       /* azul corporativo */
-    color: #fff;
-    text-align: center;
-    padding: 40px 20px;
-}
+/* ===== HERO (home) ===== */
+.hero{ background:#0a67b2; color:#fff; text-align:center; padding:clamp(28px,6vw,40px) 0; position:relative; }
+.hero::before{ content:""; position:absolute; inset:0 0 auto 0; height:60px; background: linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0) 100%); }
+.portrait{ width:clamp(110px,22vw,200px); height:clamp(110px,22vw,200px); object-fit:cover; border-radius:50%; border:4px solid #fff; box-shadow:0 12px 40px rgba(0,0,0,.22); display:block; margin:0 auto clamp(14px,3vw,20px); }
+.title{ margin:0 0 8px; font-size:clamp(26px,4.8vw,40px); font-weight:800; letter-spacing:.2px; }
+.subtitle{ margin:0; font-size:clamp(14px,2.6vw,18px); opacity:.96; }
 
-/*circulo */
-.perfil {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #fff;
-    margin-bottom: 10px;
-}
+/* ===== SOBRE MÍ ===== */
+.about{ background:#eef2f7; }
+.about h2{ margin:0 0 8px; font-size:clamp(20px,3.2vw,28px); }
+.about .lead{ max-width:75ch; color:#334155; line-height:1.7; margin:0; }
+section{ padding:clamp(32px,6vw,56px) 0; }
 
-@media (min-width: 768px) {
-    .perfil{
-        width: 160px;
-        height: 160px;
-    }
-}
+/* ===== CTA ===== */
+.cta{ background:#f8fafc; }
+.cta-card{ background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:20px; display:flex; gap:12px; align-items:center; justify-content:space-between; box-shadow:0 6px 24px rgba(2,6,23,.06); }
+.btn-primary{ display:inline-block; background:#0ea5e9; color:#fff; font-weight:700; padding:12px 18px; border-radius:10px; text-decoration:none; border:0; }
+.btn-primary:hover{ filter:brightness(1.05); box-shadow:0 12px 24px rgba(2,132,199,.25); transform:translateY(-1px); }
 
-h1 { margin: 0; }
-.subtitulo { font-size: 1.1em; }
-
-.nav {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* nombre a la izq y pill al centro */
-    padding: 14px 20px;
-}
-
-.brand { font-weight: 600; font-size: 1.1rem; }
-
-.nav { position: relative; }
-.brand { position: absolute; left: 20px; }
-.pill { margin: 0 auto; }
-
-
-/* ===== Header responsive fix ===== */
-/* Contenedor principal del nav (fondo + blur + posición fija arriba) */
-.nav-wrap {
-    position: sticky; top:0; z-index:50;
-    backdrop-filter: saturate(1.15) blur(10px);
-    background: linear-gradient(to bottom, #ffffff, #0077cc 90%);
-    border-bottom: 1px solid #0077cc; /*borde de nosotros-contacto */
-}
-/* Estructura del nav: usa grid para alinear nombre y menú */
-.nav{
-    max-width: 1100px; margin: 0 auto;
-    display: flex; align-items: center;
-    position: relative;               /* clave para centrar el pill */
-    padding: 12px 16px;
-}
-/* Estilo del texto con tu nombre (lado izquierdo) */
-.brand{
-    position: absolute; left: 12px; top: 50%;
-    transform: translateY(-50%);      /* fija el nombre a la izquierda */
-    font-weight: 600; letter-spacing: .2px;
-    color: #000000;
-}
-/* Contenedor del menú tipo "pill" (fondo redondeado + links) */
-.pill{
-    margin: 0 auto;                   /* centra el pill */
-    display: flex; gap: 6px; padding: 6px;
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 999px;
-}
-/* Estilo de los enlaces del menú */
-.pill a{ /*css de las letras */
-    text-decoration: none; /* quita el subrayado */
-    padding: 8px 14px; /* espacio interno: arriba/abajo, izquierda/derecha */
-    border-radius: 999px; /* redondeado máximo (píldora) */
-    /* 🎨 Colores y texto */
-    color: #000;
-    font-weight: 600;
-    font-size: .95rem;
-}
-/* Estilo del enlace activo (el que indica la sección actual) */
-.pill a.active{ background: rgba(255,255,255,.12); color: #e7e7ea; }
-
-
-/* ===== Hero tipografía y contenedor ===== */
-.hero{ max-width: 1100px; margin: 44px auto 90px; padding: 0 16px; }
-.title{ font-size: clamp(2rem, 7vw, 4.5rem); line-height: 1.05; }
-
-/* ===== Ajustes móviles ===== */
-@media (max-width: 680px){
-    .nav{ padding: 10px 12px; }
-    .brand{ left: 10px; font-size: 0.98rem; }
-    .pill{ gap: 4px; padding: 4px; }
-    .pill a{ padding: 7px 12px; font-size: .9rem; }
-    .hero{ margin-top: 28px; }                 /* evita que el nav tape el hero */
-}
-
-/* Evita scroll lateral por sombras/gradientes */
-html,body{ overflow-x: hidden; }
-
-
-
-/* ---------- Secciones ---------- */
-section {
-    padding: 30px 20px;
-    max-width: 700px;
-    margin: auto;
-}
-
-h2 { color: #0077cc; }
-
-/* lista sin viñetas estándar */
-ul { list-style: none; padding-left: 0; }
-ul li::before { content: "✔️"; margin-right: 8px; }
-
-
-
-
+/* ===== FOOTER ===== */
+.footer{ background:#0b1220; color:#cbd5e1; }
+.footer p{ margin:0; padding:18px 0; text-align:center; }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Contacto — Sulbaran Huamani</title>
 
-
     <!-- CSS global (tu archivo actual) -->
     <link rel="stylesheet" href="css/styles.css">
     <!-- CSS específico de la página de contacto -->
@@ -15,15 +14,14 @@
 <!-- Nav reutilizado (simple) -->
 <header class="nav-wrap">
     <nav class="nav">
-        <div class="brand"><a href="index.html">Sulbaran Huamani</a></div>
+        <div class="brand"><a href="index.html.html">Sulbaran Huamani</a></div>
         <div class="pill">
-            <a href="index.html#work">about me</a>
-            <a href="index.html#projects">projects</a>
-            <a class="active" href="contact.html" aria-current="page">contacto</a>
+            <a href="index.html">about me</a>
+            <a href="proyectos.html">projects</a>
+            <a class="active" href="contacto.html" aria-current="page">contacto</a>
         </div>
     </nav>
 </header>
-
 
 <!-- Hero de contacto -->
 <section class="contact-hero">
@@ -31,19 +29,16 @@
     <p>¿Una idea, proyecto o colaboración? Escríbeme por el formulario, correo o WhatsApp.</p>
 </section>
 
-
 <!-- Contenido: columna izquierda (form) + derecha (info) -->
 <main class="contact-grid">
     <!-- Formulario -->
     <section class="card">
         <h2>Envíame un mensaje</h2>
 
-
         <!-- Opción 1: Formspree (recomendado). Reemplaza TU_ENDPOINT abajo -->
         <form id="contactForm" action="https://formspree.io/f/TU_ENDPOINT" method="POST" novalidate>
             <!-- Opción 2 (fallback): mailto (borra action de arriba y descomenta esta) -->
             <!-- <form id="contactForm" action="mailto:tu-correo@dominio.com" method="POST" enctype="text/plain" novalidate> -->
-
 
             <label class="field">
                 <span>Nombre</span>
@@ -51,13 +46,11 @@
                 <small class="error" aria-live="polite"></small>
             </label>
 
-
             <label class="field">
                 <span>Email</span>
                 <input type="email" name="email" required placeholder="tucorreo@email.com" autocomplete="email">
                 <small class="error" aria-live="polite"></small>
             </label>
-
 
             <label class="field">
                 <span>Mensaje</span>
@@ -65,18 +58,47 @@
                 <small class="error" aria-live="polite"></small>
             </label>
 
-
             <button type="submit" class="btn-primary">Enviar</button>
             <p class="form-note">Respuesta usual: 24–48 h.</p>
         </form>
     </section>
 
-
     <!-- Información y redes -->
     <aside class="card">
         <h2>Contacto directo</h2>
         <ul class="list">
-            <li><strong>Email:</strong> <a href="mailto:tu-correo@dominio.com">sulbaranhuamani@gmail.com</a></li>
-            <li><strong>WhatsApp:</strong> <a class="wa" href="https://wa.me/51TU_NUMERO?text=906892853" target="_blank" rel="noopener">Escríbeme por WhatsApp</a></li>
+            <li><strong>Email:</strong> <a href="mailto:tu-correo@dominio.com">tu-correo@dominio.com</a></li>
+            <li><strong>WhatsApp:</strong> <a class="wa" href="https://wa.me/51906892853?text=Hola%20Sulbaran%2C%20vi%20tu%20web" target="_blank" rel="noopener">Escríbeme por WhatsApp</a></li>
             <li><strong>Ubicación:</strong> Lima, Perú</li>
+        </ul>
+
+        <!-- Bloque “Sígueme en redes” -->
+        <section class="social-block" aria-labelledby="rrss-title">
+            <h3 id="rrss-title">Sígueme en redes sociales</h3>
+            <div class="social-row">
+                <a class="ico" aria-label="Instagram" href="https://instagram.com/TU_USER" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 16.8 2.8 2.8 0 0 0 12 9.2zm4.7-.9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+                </a>
+                <a class="ico" aria-label="TikTok" href="https://tiktok.com/@TU_USER" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 2c1 2 2 3 4 3v3c-1 0-2-.2-3-.6V15a7 7 0 1 1-7-7c.3 0 .7 0 1 .1v3a4 4 0 1 0 4 4V2h1z"/></svg>
+                </a>
+                <a class="ico" aria-label="Facebook" href="https://facebook.com/TU_USER" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 22v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3V2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4z"/></svg>
+                </a>
+                <a class="ico" aria-label="LinkedIn" href="https://linkedin.com/in/TU_USER" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.9 21H3.5V8.6h3.4V21zM5.2 7.1a2 2 0 1 1 0-4.1 2 2 0 0 1 0 4.1zM21 21h-3.4v-6.2c0-1.5-.5-2.6-1.9-2.6-1 0-1.6.7-1.9 1.3-.1.2-.1.6-.1.9V21H10V8.6h3.3v1.7c.5-.8 1.4-2 3.4-2 2.4 0 4.3 1.6 4.3 5V21z"/></svg>
+                </a>
+                <a class="ico" aria-label="YouTube" href="https://youtube.com/@TU_USER" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-4-1-5a3 3 0 0 0-2-2C18 4 12 4 12 4s-6 0-8 1a3 3 0 0 0-2 2c-1 1-1 5-1 5s0 4 1 5a3 3 0 0 0 2 2c2 1 8 1 8 1s6 0 8-1a3 3 0 0 0 2-2c1-1 1-5 1-5zM10 15V9l6 3-6 3z"/></svg>
+                </a>
+            </div>
+        </section>
+    </aside>
+</main>
+
+<!-- Toast de éxito -->
+<div id="toast" role="status" aria-live="polite" class="toast" hidden>¡Mensaje enviado, gracias!</div>
+
+<script src="js/contactos.js" defer></script>
+</body>
 </html>

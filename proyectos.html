@@ -1,22 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proyectos — Sulbaran Huamani</title>
+
+    <!-- CSS global -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- CSS específico de proyectos -->
+    <link rel="stylesheet" href="css/proyectos.css">
 </head>
 <body>
+<!-- Nav reutilizado -->
+<header class="nav-wrap">
+    <nav class="nav">
+        <div class="brand"><a href="index.html.html">Sulbaran Huamani</a></div>
+        <div class="pill">
+            <a href="index.html#work">about me</a>
+            <a class="active" href="proyectos.html" aria-current="page">projects</a>
+            <a href="contacto.html">contacto</a>
+        </div>
+    </nav>
+</header>
 
+<!-- Hero -->
+<section class="proj-hero">
+    <h1>Proyectos</h1>
+    <p>Selección de trabajos y experimentos. Cada tarjeta enlaza a más detalle o demo.</p>
 
-<!-- ===== Proyectos ===== -->
-<section class="proyectos">
-    <h2>Proyectos</h2>
-    <ul>
-        <li>✅ Saneamiento</li>
-        <li>✅ Diseño</li>
-        <li>✅ Piscinas</li>
-    </ul>
+    <!-- Filtros -->
+    <div class="filters" role="toolbar" aria-label="Filtros de proyectos">
+        <button class="chip active" data-filter="all">Todos</button>
+        <button class="chip" data-filter="saneamiento">Saneamiento</button>
+        <button class="chip" data-filter="diseno">Diseño</button>
+        <button class="chip" data-filter="piscinas">Piscinas</button>
+        <input id="search" type="search" placeholder="Buscar por título, stack o tags…" aria-label="Buscar proyectos" />
+    </div>
 </section>
 
+<!-- Grid de proyectos -->
+<main class="grid">
+    <!-- Proyecto 1 -->
+    <article class="card project" data-cats="saneamiento" data-tags="agua, redes, gis">
+        <img class="thumb" src="img/proy-saneamiento.webp" alt="Miniatura del proyecto de Saneamiento" onerror="this.src='img/FP0.png'"/>
+        <div class="body">
+            <div class="top">
+                <h2 class="title">Sistema de Saneamiento Local</h2>
+                <span class="badge done" title="Completado">✔ Completado</span>
+            </div>
+            <p class="desc">Modelo de redes de agua potable y alcantarillado para un distrito; incluye estimación de demanda y plan de mantenimiento.</p>
+            <ul class="meta">
+                <li>Stack: QGIS, Excel, Python</li>
+                <li>Año: 2025</li>
+            </ul>
+            <div class="actions">
+                <a class="btn" href="#" aria-label="Ver caso Saneamiento">Caso</a>
+                <a class="btn ghost" href="#" aria-label="Abrir demo Saneamiento">Demo</a>
+            </div>
+        </div>
+    </article>
 
+    <!-- Proyecto 2 -->
+    <article class="card project" data-cats="diseno" data-tags="ui, ux, web">
+        <img class="thumb" src="img/proy-diseno.webp" alt="Miniatura del proyecto de Diseño" onerror="this.src='img/FP0.png'"/>
+        <div class="body">
+            <div class="top">
+                <h2 class="title">Rediseño Web Personal</h2>
+                <span class="badge wip" title="En progreso">• En progreso</span>
+            </div>
+            <p class="desc">Exploraciones de tipografía, gradientes y componentes accesibles. Performance y SEO como prioridades.</p>
+            <ul class="meta">
+                <li>Stack: HTML, CSS, JS</li>
+                <li>Año: 2025</li>
+            </ul>
+            <div class="actions">
+                <a class="btn" href="#" aria-label="Ver caso Diseño">Caso</a>
+                <a class="btn ghost" href="#" aria-label="Abrir repo Diseño">Repo</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Proyecto 3 -->
+    <article class="card project" data-cats="piscinas" data-tags="hidraulica, presupuesto">
+        <img class="thumb" src="img/proy-piscinas.webp" alt="Miniatura del proyecto de Piscinas" onerror="this.src='img/FP0.png'"/>
+        <div class="body">
+            <div class="top">
+                <h2 class="title">Piscinas Residenciales</h2>
+                <span class="badge plan" title="Planificado">○ Planificado</span>
+            </div>
+            <p class="desc">Diseño preliminar de circulación, filtrado y costos estimados para proyectos residenciales.</p>
+            <ul class="meta">
+                <li>Stack: AutoCAD, Excel</li>
+                <li>Año: 2025</li>
+            </ul>
+            <div class="actions">
+                <a class="btn" href="#" aria-label="Ver caso Piscinas">Caso</a>
+                <a class="btn ghost" href="#" aria-label="Abrir estimador Piscinas">Estimador</a>
+            </div>
+        </div>
+    </article>
+</main>
+
+<script src="js/proyectos.js" defer></script>
 </body>
 </html>

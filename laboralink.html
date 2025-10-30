@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laboralink | Reclutamiento Corporativo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: #f5f6fa; color: #333; line-height: 1.6; }
+
+        header {
+            background-color: #0a2540; color: #fff; padding: 1.2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 10;
+        }
+        header h1 { font-size: 1.8rem; font-weight: bold; letter-spacing: 1px; }
+        nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 500; transition: color 0.3s ease; }
+        nav a:hover { color: #64b5f6; }
+
+        /* HERO */
+        .hero {
+            position: relative; height: 88vh; min-height: 520px;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden;
+        }
+        .hero::before {
+            content: ""; position: absolute; inset: 0;
+            background-image: url("https://i.pinimg.com/originals/da/62/4b/da624b3d0c3d91c96d0d3f1fa1d85b80.gif");
+            background-size: cover; background-position: center; filter: brightness(0.35);
+            z-index: 0;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; padding: 20px; }
+        .hero h2 { font-size: 2.8rem; margin-bottom: 15px; text-shadow: 3px 3px 8px rgba(0,0,0,0.8); }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; text-shadow: 2px 2px 6px rgba(0,0,0,0.8); }
+        .hero button {
+            background-color: #64b5f6; border: none; color: #fff; padding: 12px 30px; border-radius: 25px; font-size: 1rem;
+            cursor: pointer; transition: background 0.3s ease; position: relative; z-index: 1;
+        }
+        .hero button:hover { background-color: #2196f3; }
+
+        section { padding: 80px 5%; text-align: center; }
+        section h3 { font-size: 2rem; color: #0a2540; margin-bottom: 25px; }
+
+        .about p, .services p { max-width: 800px; margin: 0 auto 20px; color: #555; font-size: 1.05rem; }
+
+        .service-cards {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px; margin-top: 40px;
+        }
+        .card {
+            background: #fff; border-radius: 12px; padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h4 { color: #0a2540; margin-bottom: 10px; }
+
+        .why-us ul {
+            list-style: none; max-width: 700px; margin: 0 auto; text-align: left; color: #555;
+        }
+        .why-us li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .why-us li::before { content: "✔"; color: #2196f3; position: absolute; left: 0; top: 0; }
+
+        .contact { background-color: #0a2540; color: #fff; }
+        .contact p { margin-bottom: 20px; }
+        .contact a { color: #64b5f6; text-decoration: none; }
+
+        footer {
+            background: #071a2b; color: #ccc; padding: 20px; text-align: center; font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2rem; }
+            nav a { margin-left: 12px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Laboralink</h1>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#ventajas">Ventajas</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section id="inicio" class="hero" aria-label="Sección de inicio">
+    <div class="hero-content">
+        <h2>Reclutamiento Corporativo, simple y efectivo</h2>
+        <p>Conectamos talento con empresas en crecimiento. <em>Right people, right seats.</em></p>
+        <a href="#contacto"><button>Contáctanos</button></a>
+    </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="about">
+    <h3>¿Quiénes somos?</h3>
+    <p>Somos un equipo de especialistas en atracción de talento y selección por competencias.
+        Diseñamos procesos ágiles, medibles y alineados a tus objetivos de negocio.</p>
+    <p><strong>Laboralink</strong> integra tecnología, data y experiencia para elevar la calidad de tus contrataciones.</p>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="services">
+    <h3>Servicios</h3>
+    <p>Soluciones de recruiting end-to-end o por módulos, según tu etapa de crecimiento.</p>
+
+    <div class="service-cards">
+        <article class="card">
+            <h4>Reclutamiento 360°</h4>
+            <p>Desde el perfilamiento hasta el cierre de oferta y onboarding inicial.</p>
+        </article>
+        <article class="card">
+            <h4>Hunting Ejecutivo</h4>
+            <p>Búsqueda directa de mandos medios y alta gerencia, con evaluaciones profundas.</p>
+        </article>
+        <article class="card">
+            <h4>RPO Parcial</h4>
+            <p>Externaliza picos de demanda con nuestro equipo on-demand integrado a tu marca.</p>
+        </article>
+        <article class="card">
+            <h4>Evaluaciones</h4>
+            <p>Pruebas psicométricas, técnicas y de competencias con reportes accionables.</p>
+        </article>
+    </div>
+</section>
+
+<!-- VENTAJAS -->
+<section id="ventajas" class="why-us">
+    <h3>¿Por qué elegirnos?</h3>
+    <ul>
+        <li>Time-to-hire reducido con

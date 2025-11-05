@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Laboralink — Reclutamiento Inteligente</title>
+  <meta name="description" content="Laboralink - Plataforma de reclutamiento con IA. Encuentra talento que encaje de verdad." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#FBFBFD;
+      --navy:#0B2D5E;
+      --orange:#FF6A00;
+      --orange-2:#FF9E43;
+      --teal:#0EA5A1;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --radius:14px;
+      --shadow: 0 6px 20px rgba(11,45,94,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg, var(--bg) 0%, #F2F6FB 100%);
+      color:var(--navy);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.4;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.55));
+      border-bottom: 1px solid rgba(11,45,94,0.04);
+    }
+    .container{max-width:1200px;margin:0 auto;padding:18px}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand .logo{
+      width:46px;height:46px;border-radius:10px;
+      background: linear-gradient(135deg,var(--orange),var(--orange-2));
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;
+      box-shadow: 0 6px 20px rgba(255,106,0,0.18);
+    }
+    nav ul{list-style:none;padding:0;margin:0;display:flex;gap:18px;align-items:center}
+    nav a{color:var(--navy);text-decoration:none;font-weight:600;font-size:14px;opacity:0.92}
+    nav a:hover{color:var(--orange);}
+
+    /* Buttons */
+    .btn {
+      position:relative; display:inline-block; padding:12px 20px; border-radius:999px; font-weight:700;
+      cursor:pointer; outline:none; border:0; overflow:hidden; color:white;
+      box-shadow: 0 8px 24px rgba(11,45,94,0.12);
+      transform:translateZ(0);
+    }
+    .btn-primary{
+      background: linear-gradient(90deg,var(--orange),var(--orange-2));
+      animation: gradientShift 3.5s linear infinite;
+    }
+    .btn-ghost{
+      background:transparent;border:1px solid rgba(11,45,94,0.08); color:var(--navy); padding:10px 16px; border-radius:10px;
+    }
+    @keyframes gradientShift{0%{filter: hue-rotate(0deg)}50%{filter: hue-rotate(10deg)}100%{filter: hue-rotate(0deg)}}
+    .btn.float{animation: floatY 4s ease-in-out infinite}
+    @keyframes floatY{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    .btn .slide {position:absolute; right:10px; top:50%; transform:translateY(-50%); width:36px;height:36px;border-radius:10px;
+      background: rgba(255,255,255,0.18); display:flex;align-items:center;justify-content:center; transition: transform .28s ease;}
+    .btn:hover .slide{ transform:translateY(-50%) translateX(6px); }
+
+    .ripple {position:absolute; border-radius:50%; background:rgba(255,255,255,0.3); transform:scale(0); animation:rippleAnim .6s linear; pointer-events:none;}
+    @keyframes rippleAnim{ to{ transform:scale(4); opacity:0 } }
+
+    /* HERO */
+    .hero{padding:48px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 480px;gap:36px;align-items:center}
+    .hero-title{font-size:40px;line-height:1.02;margin:0 0 14px}
+    .hero-sub{color:var(--muted);margin:0 0 20px;max-width:600px}
+
+    /* Cards and layout */
+    .card{background:var(--card); border-radius:16px; padding:18px; box-shadow:var(--shadow); border:1px solid rgba(11,45,94,0.03)}
+    .company-photo{width:100%;height:220px;object-fit:cover;border-radius:10px;margin-bottom:12px}
+    .compat-bar{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-top:6px;color:var(--muted);font-size:13px}
+    .features{display:flex;gap:18px;margin-top:28px}
+    .feature{flex:1;background:linear-gradient(180deg,rgba(250,250,250,1),rgba(255,255,255,0.9));padding:18px;border-radius:12px}
+    .logos{margin-top:28px;background:linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6)); padding:12px;border-radius:12px;overflow:hidden}
+    .logos-inner{display:flex;gap:36px;align-items:center;min-width:900px;animation:logosMove 20s linear infinite}
+    @keyframes logosMove{ 0%{transform:translateX(0)} 100%{transform:translateX(-40%)} }
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+
+    /* Footer */
+    footer{margin-top:36px;padding:36px 0;color:var(--muted)}
+    .footer-grid{display:flex;gap:24px;justify-content:space-between;flex-wrap:wrap}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero-grid{grid-template-columns:1fr}
+      .logos-inner{min-width:650px}
+      .grid3{grid-template-columns:1fr}
+    }
+
+    /* LOGIN / SIGNUP PANELS (corner floating boxes) */
+    .panel {
+      position:fixed; top:78px; right:24px; width:360px; background:#fff; border-radius:12px;
+      box-shadow:0 28px 80px rgba(11,45,94,0.18); padding:16px; display:none; z-index:120; transform-origin:top right;
+      transition: transform .22s ease, opacity .22s ease;
+    }
+    .panel.show{ display:block; transform:translateY(0); opacity:1; }
+    .panel.hidden{ transform:translateY(-8px); opacity:0; }
+
+    .panel h3{margin:0 0 8px; font-size:18px}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input, select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(11,45,94,0.06);margin-bottom:12px}
+    .small{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">L</div>
+        <div class="txt">
+          <div class="title">Laboralink</div>
+          <div class="tag">Talento + Tecnología</div>
+        </div>
+      </div>
+
+      <nav aria-label="Principal">
+        <ul>
+          <li><a href="#caracteristicas">Características</a></li>
+          <li><a href="#about">Sobre nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div style="display:flex;gap:12px;align-items:center">
+        <button id="btn-login" class="btn btn-ghost" aria-haspopup="true" title="Iniciar sesión">Iniciar sesión</button>
+        <button id="btn-signup" class="btn btn-primary float" style="display:inline-flex;align-items:center;gap:10px">
+          Únete gratis
+          <span class="slide">→</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="container hero">
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-title">Encuentra talento que <span style="background:linear-gradient(90deg,var(--orange),var(--orange-2)); -webkit-background-clip:text; color:transparent">encaje de verdad</span></h1>
+        <p class="hero-sub">
+          Laboralink combina IA, entrevistas automatizadas y evaluaciones interactivas para preseleccionar candidatos con compatibilidad cultural y técnica real.
+        </p>
+
+        <div style="display:flex;gap:12px;align-items:center">
+          <button id="cta-join" class="btn btn-primary float" style="font-size:16px;padding:14px 22px;position:relative;overflow:hidden">
+            Únete gratis
+            <span class="slide">➜</span>
+          </button>
+          <button id="cta-demo" class="btn btn-ghost" style="font-weight:700">Ver demo</button>
+        </div>
+
+        <div class="features" aria-hidden="true">
+          <div class="feature card">
+            <strong>Filtrado Inteligente</strong>
+            <div class="small">Algoritmos que priorizan ajuste y potencial.</div>
+          </div>
+          <div class="feature card">
+            <strong>Entrevistas Automatizadas</strong>
+            <div class="small">Análisis de comunicación y coherencia.</div>
+          </div>
+          <div class="feature card">
+            <strong>Seguimiento</strong>
+            <div class="small">Métricas post-contratación para validar decisiones.</div>
+          </div>
+        </div>
+
+        <div class="logos" aria-hidden="true">
+          <div class="logos-inner">
+            <img src="https://via.placeholder.com/140x40?text=Empresa+1" alt="logo 1" />
+            <img src="https://via.placeholder.com/140x40?text=Empresa+2" alt="logo 2" />
+            <img src="https://via.placeholder.com/140x40?text=PYME" alt="logo 3" />
+            <img src="https://via.placeholder.com/140x40?text=Startup" alt="logo 4" />
+            <img src="https://via.placeholder.com/140x40?text=Compañía" alt="logo 5" />
+            <img src="https://via.placeholder.com/140x40?text=Empresa+1" alt="logo 1" />
+            <img src="https://via.placeholder.com/140x40?text=Empresa+2" alt="logo 2" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PREVIEW CARD (right) -->
+      <aside>
+        <div class="card" style="position:relative;overflow:visible">
+          <img class="company-photo" src="https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=6d0f0b6f5c9e5d7a7c5c0f1f0d3b9b8e" alt="Equipo corporativo">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Compañía Ejemplo</div>
+              <div class="small">Industria - General</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-weight:800;color:var(--orange)">82%</div>
+              <div class="small">Compatibilidad</div>
+            </div>
+          </div>
+
+          <div class="compat-bar">
+            <div class="small">Fortalezas: comunicación · trabajo en equipo</div>
+            <div>
+              <button class="btn btn-primary" style="padding:8px 12px;font-size:13px">Invitar</button>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+            <img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" alt="gif" style="width:64px;height:64px;border-radius:10px;object-fit:cover">
+            <div style="font-size:13px;color:var(--muted)">Reporte: bueno en comunicación y adaptabilidad. Recomendado para roles colaborativos.</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          <div>
+            <div style="font-weight:700">¿Eres una PYME?</div>
+            <div class="small">Soporte personalizado y atención humana.</div>
+          </div>
+          <button class="btn btn-primary" style="padding:8px 12px;font-size:13px">Contactar</button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- three feature cards -->
+    <section id="caracteristicas" class="grid3">
+      <div class="card">
+        <h4>Evaluaciones gamificadas</h4>
+        <div class="small">Simulaciones que revelan desempeño en tareas reales.</div>
+      </div>
+      <div class="card">
+        <h4>Transparencia en IA</h4>
+        <div class="small">El candidato ve qué se evalúa y por qué — reducción de sesgos.</div>
+      </div>
+      <div class="card">
+        <h4>Integraciones</h4>
+        <div class="small">Conexión con ATS, nómina y HRIS para flujos directos.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LOGIN PANEL (corner box) -->
+  <div id="loginPanel" class="panel hidden" role="region" aria-label="Iniciar sesión">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <div style="font-weight:800">Iniciar sesión</div>
+      <button id="closeLogin" style="background:none;border:none;color:var(--muted);font-weight:700;cursor:pointer">X</button>
+    </div>
+    <!-- NOTE: form submission now redirects to palanca.html -->
+    <form id="login-form">
+      <label>Correo</label><input id="login-email" type="email" placeholder="tu@correo.com" required>
+      <label>Contraseña</label><input id="login-pass" type="password" placeholder="••••••" required>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+        <button type="button" id="loginCancel" class="btn btn-ghost">Cancelar</button>
+        <button id="loginSubmit" type="submit" class="btn btn-primary">Entrar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- SIGNUP PANEL (corner box, same style as login) -->
+  <div id="signupPanel" class="panel hidden" role="region" aria-label="Crear cuenta">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <div style="font-weight:800">Crear cuenta</div>
+      <button id="closeSignup" style="background:none;border:none;color:var(--muted);font-weight:700;cursor:pointer">X</button>
+    </div>
+    <form id="signup-form" onsubmit="event.preventDefault(); alert('Registro simulado OK');">
+      <label>Nombre completo</label><input type="text" placeholder="Tu nombre" required>
+      <label>Correo electrónico</label><input type="email" placeholder="tu@correo.com" required>
+      <label>¿Eres?</label>
+      <select required>
+        <option value="">Selecciona</option>
+        <option>Postulante</option>
+        <option>Empresa / Reclutador</option>
+      </select>
+      <label>Contraseña</label><input type="password" placeholder="••••••" required>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+        <button type="button" id="signupCancel" class="btn btn-ghost">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Crear cuenta</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div style="font-weight:800">Laboralink</div>
+        <div class="small">Conectando talento y cultura con precisión y ética.</div>
+      </div>
+
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:700">Empresa</div>
+          <div class="small">Casos · Integraciones</div>
+        </div>
+        <div>
+          <div style="font-weight:700">Ayuda</div>
+          <div class="small">Contacto · Soporte</div>
+        </div>
+      </div>
+
+      <div style="text-align:right">
+        <div class="small">hola@laboralink.com</div>
+        <div class="small">© 2025 Laboralink</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ripple effect utility */
+    function attachRipple(btn){
+      btn.addEventListener('click', function(e){
+        const rect = btn.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+        btn.appendChild(ripple);
+        setTimeout(()=> ripple.remove(), 650);
+      });
+    }
+    document.querySelectorAll('.btn.btn-primary').forEach(attachRipple);
+
+    // Panels
+    const loginBtn = document.getElementById('btn-login');
+    const signupBtn = document.getElementById('btn-signup');
+    const ctaJoin = document.getElementById('cta-join');
+
+    const loginPanel = document.getElementById('loginPanel');
+    const signupPanel = document.getElementById('signupPanel');
+
+    const closeLogin = document.getElementById('closeLogin');
+    const closeSignup = document.getElementById('closeSignup');
+
+    const loginCancel = document.getElementById('loginCancel');
+    const signupCancel = document.getElementById('signupCancel');
+
+    // helper to toggle panels and ensure only one open at a time
+    function togglePanel(panel){
+      // hide other
+      [loginPanel, signupPanel].forEach(p => {
+        if(p !== panel){
+          p.classList.remove('show');
+          p.classList.add('hidden');
+        }
+      });
+      // toggle requested
+      if(panel.classList.contains('show')){
+        panel.classList.remove('show');
+        panel.classList.add('hidden');
+      } else {
+        panel.classList.remove('hidden');
+        panel.classList.add('show');
+      }
+    }
+
+    loginBtn.addEventListener('click', function(){
+      togglePanel(loginPanel);
+      // focus
+      setTimeout(()=> {
+        if(loginPanel.classList.contains('show')){
+          const input = loginPanel.querySelector('input[type="email"]');
+          if(input) input.focus();
+        }
+      }, 120);
+    });
+
+    signupBtn.addEventListener('click', function(){
+      togglePanel(signupPanel);
+      setTimeout(()=> {
+        if(signupPanel.classList.contains('show')){
+          const input = signupPanel.querySelector('input[type="text"], input[type="email"]');
+          if(input) input.focus();
+        }
+      }, 120);
+    });
+
+    // hero CTA also opens signupPanel
+    ctaJoin.addEventListener('click', function(){
+      // open signup panel (if login open, close it)
+      if(!signupPanel.classList.contains('show')){
+        togglePanel(signupPanel);
+      } else {
+        togglePanel(signupPanel);
+      }
+      setTimeout(()=> {
+        const input = signupPanel.querySelector('input[type="text"], input[type="email"]');
+        if(input) input.focus();
+      }, 120);
+    });
+
+    // close handlers
+    closeLogin.addEventListener('click', ()=> { loginPanel.classList.remove('show'); loginPanel.classList.add('hidden'); });
+    closeSignup.addEventListener('click', ()=> { signupPanel.classList.remove('show'); signupPanel.classList.add('hidden'); });
+
+    loginCancel.addEventListener('click', ()=> { loginPanel.classList.remove('show'); loginPanel.classList.add('hidden'); });
+    signupCancel.addEventListener('click', ()=> { signupPanel.classList.remove('show'); signupPanel.classList.add('hidden'); });
+
+    // close panels on ESC
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        [loginPanel, signupPanel].forEach(p => { p.classList.remove('show'); p.classList.add('hidden'); });
+      }
+    });
+
+    // click outside to close (detect clicks not inside panels)
+    document.addEventListener('click', function(e){
+      const target = e.target;
+      // if clicked a control button, do nothing (handled above)
+      if(target.closest('#btn-login') || target.closest('#btn-signup') || target.closest('#cta-join')) return;
+      if(!target.closest('#loginPanel')) loginPanel.classList.remove('show'), loginPanel.classList.add('hidden');
+      if(!target.closest('#signupPanel') && !target.closest('#btn-signup')) signupPanel.classList.remove('show'), signupPanel.classList.add('hidden');
+    });
+
+    // ---- NEW: redirect on successful login ----
+    const loginForm = document.getElementById('login-form');
+    loginForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      // here podrías validar con fetch a tu API; por ahora redirigimos a palanca.html
+      // si quieres enviar datos reales, reemplaza con fetch('/api/login', {method:'POST', body:...})
+      window.location.href = 'frontd.html';
+    });
+  </script>
+</body>
+</html>

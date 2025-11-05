@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Palanca — Laboralink (Dashboard)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F7FB;
+    --navy:#07183a;
+    --accent:#FF6A00;
+    --accent-2:#FF944D;
+    --teal:#0EA5A1;
+    --muted:#6B7280;
+    --card:#ffffff;
+    --glass: rgba(255,255,255,0.72);
+    --radius:14px;
+    --shadow-lg: 0 20px 50px rgba(7,24,58,0.12);
+    --shadow-sm: 0 8px 24px rgba(7,24,58,0.06);
+    --glass-border: rgba(7,24,58,0.06);
+    --accent-glow: 0 8px 30px rgba(255,106,0,0.16);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    background:linear-gradient(180deg,#f7fbff 0%,var(--bg) 100%);
+    color:var(--navy);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+  }
+  .container{max-width:1200px;margin:0 auto;padding:18px}
+
+  /* ---------- Top bar ---------- */
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;position:sticky;top:0;background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.55));backdrop-filter: blur(6px);border-bottom:1px solid var(--glass-border);z-index:40}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;box-shadow:var(--accent-glow)}
+  .title-small{font-size:13px;color:var(--muted);margin-top:2px}
+  .search{flex:1;max-width:680px;display:flex;align-items:center;gap:8px;background:var(--card);padding:10px 12px;border-radius:12px;box-shadow:var(--shadow-sm);border:1px solid var(--glass-border)}
+  .search input{border:0;outline:none;font-size:14px;width:100%}
+  .top-actions{display:flex;gap:10px;align-items:center}
+  .icon-btn{background:var(--card);padding:8px;border-radius:10px;border:1px solid var(--glass-border);cursor:pointer;box-shadow:var(--shadow-sm)}
+  .notif{position:relative}
+  .notif .badge{position:absolute;top:-6px;right:-6px;background:#FF3B30;color:white;font-size:11px;padding:4px 6px;border-radius:999px;box-shadow:0 6px 18px rgba(255,59,48,0.12);animation:badgePulse 2s infinite}
+  @keyframes badgePulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    margin-top:18px;border-radius:16px;overflow:hidden;position:relative;min-height:320px;border:1px solid rgba(7,24,58,0.03);
+    box-shadow:var(--shadow-lg);
+  }
+  .hero video{width:100%;height:360px;object-fit:cover;filter:brightness(.48) saturate(.98)}
+  .hero::after{
+    content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(7,24,58,0.28), rgba(0,0,0,0.12));
+    mix-blend-mode:multiply;
+  }
+  .hero-inner{position:absolute;left:36px;top:40px;color:#fff;max-width:680px;z-index:2}
+  .hero h1{font-size:36px;margin:0 0 8px;line-height:1.03;text-shadow:0 6px 28px rgba(7,24,58,0.5)}
+  .hero p{margin:0 0 16px;color:rgba(255,255,255,0.92);font-size:16px;text-shadow:0 6px 18px rgba(7,24,58,0.35)}
+  .cta-row{display:flex;gap:12px}
+
+  /* animated primary button (fancy) */
+  .btn {
+    position:relative; display:inline-flex; align-items:center; gap:10px;
+    padding:12px 18px;border-radius:999px;color:white;font-weight:800;border:0;cursor:pointer;
+    overflow:visible; transform:translateZ(0); transition:transform .18s ease, box-shadow .18s ease;
+    box-shadow:var(--accent-glow);
+  }
+  .btn:active{transform:translateY(1px) scale(.995)}
+  .btn-primary{
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    animation:glowShift 4s linear infinite;
+  }
+  @keyframes glowShift{0%{filter:hue-rotate(0deg)}50%{filter:hue-rotate(7deg)}100%{filter:hue-rotate(0deg)}}
+  .btn .slide{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;transition:transform .28s}
+  .btn:hover .slide{transform:translateX(6px)}
+  .btn.btn-outline{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.14);color:white}
+
+  /* subtle float */
+  .float{animation:floaty 5s ease-in-out infinite}
+  @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+  /* ---------- Layout ---------- */
+  .grid{display:grid;grid-template-columns:320px 1fr;gap:18px;margin-top:18px}
+  .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:var(--shadow-sm);border:1px solid var(--glass-border)}
+  .left-col{display:flex;flex-direction:column;gap:12px}
+
+  /* profile */
+  .profile{display:flex;gap:12px;align-items:center}
+  .avatar{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--teal),#00b7a8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:0 10px 30px rgba(14,165,161,0.12)}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .badge{padding:6px 8px;border-radius:999px;background:linear-gradient(180deg,#fff,#fbfcff);border:1px solid rgba(7,24,58,0.04);font-size:13px;color:var(--navy)}
+
+  /* tabs */
+  .tabs{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+  .tab{padding:8px 12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);cursor:pointer;border:1px solid rgba(7,24,58,0.04);font-weight:700}
+  .tab.active{box-shadow:0 12px 40px rgba(7,24,58,0.06);border-color:rgba(7,24,58,0.06)}
+
+  /* reels */
+  .reels{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;margin-top:10px}
+  .reel{min-width:240px;border-radius:12px;overflow:hidden;position:relative;background:#000;color:#fff;cursor:pointer;transition:transform .18s ease, box-shadow .18s}
+  .reel:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(7,24,58,0.12)}
+  .reel video{width:100%;height:220px;object-fit:cover;display:block;transition:transform .28s}
+  .reel:hover video{transform:scale(1.05)}
+  .reel .meta{padding:8px;font-size:13px;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.3));position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center}
+
+  /* feed posts */
+  .post{display:flex;gap:12px;padding:12px;border-radius:10px;border:1px solid rgba(7,24,58,0.03);margin-bottom:12px;align-items:flex-start;background:linear-gradient(180deg,#fff,#fbfdff);transition:transform .12s,box-shadow .12s}
+  .post:hover{transform:translateY(-6px);box-shadow:0 18px 48px rgba(7,24,58,0.06)}
+  .p-left{width:56px}
+  .p-left .mini-avatar{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+  .p-body{flex:1}
+  .p-meta{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px}
+  .p-actions{display:flex;gap:8px;margin-top:10px;align-items:center}
+  .reaction{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(7,24,58,0.04);cursor:pointer}
+  .reaction .count{font-weight:700;color:var(--muted)}
+  .reaction.animate{animation:reactPop .45s ease}
+  @keyframes reactPop{0%{transform:scale(.9)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+
+  /* match cards (swipe style) */
+  .match-grid{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;margin-top:10px}
+  .match-card{min-width:220px;border-radius:12px;padding:12px;background:linear-gradient(180deg,#fff,#fcfcff);border:1px solid rgba(7,24,58,0.04);transition:transform .18s}
+  .match-card:hover{transform:translateY(-6px);box-shadow:0 18px 48px rgba(7,24,58,0.06)}
+
+  /* jobs */
+  .jobs-filter{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+  .job-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+  .job{padding:12px;border-radius:10px;border:1px solid rgba(7,24,58,0.035);background:linear-gradient(180deg,#fff,#fbfeff);display:flex;justify-content:space-between;align-items:center}
+
+  /* events */
+  .events-list{display:flex;flex-direction:column;gap:10px}
+
+  /* Floating Action Button */
+  .fab{position:fixed;right:28px;bottom:28px;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:64px;height:64px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:22px;box-shadow:0 20px 60px rgba(255,106,0,0.18);cursor:pointer;z-index:60;animation:fabPulse 2.8s infinite}
+  @keyframes fabPulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+
+  /* footer small */
+  footer{margin-top:40px;padding:22px 0;color:var(--muted);text-align:center}
+
+  /* responsive */
+  @media (max-width:1000px){
+    .grid{grid-template-columns:1fr; padding-bottom:80px}
+    .hero video{height:220px}
+    .reel{min-width:180px}
+    .match-card{min-width:180px}
+    .search{max-width:100%}
+    .logo{width:44px;height:44px}
+    .avatar{width:56px;height:56px}
+    .fab{right:16px;bottom:16px}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Top bar -->
+  <div class="topbar" role="banner">
+    <div class="brand" aria-hidden="false">
+      <div class="logo" aria-hidden="true">L</div>
+      <div>
+        <div style="font-weight:800">Laboralink</div>
+        <div class="title-small">Palanca — Panel profesional</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;align-items:center;width:100%;max-width:820px">
+      <div class="search" role="search" aria-label="Buscar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="globalSearch" placeholder="Buscar empleo, personas, skills (ej. 'diseñador UX')" aria-label="Buscar"/>
+        <button class="icon-btn" title="Filtros">⚙️</button>
+      </div>
+
+      <div class="top-actions">
+        <div class="icon-btn notif" title="Notificaciones">🔔 <span class="badge">3</span></div>
+        <div class="icon-btn" title="Mensajes">💬</div>
+        <div class="icon-btn" id="profileBtn" title="Mi perfil">AJ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <!-- sample background video (may be blocked on some browsers) -->
+    <video autoplay muted loop playsinline src="https://cdn.coverr.co/videos/coverr-office-people-working-1624?token=eyJhbGciOiJIUzI1NiJ9" aria-hidden="true"></video>
+    <div class="hero-inner" role="region" aria-label="Hero content">
+      <h1>Tu talento merece ser visto</h1>
+      <p>Muestra quién eres, no solo tu CV. Crea Reels, publica en la comunidad y conecta con empresas mediante IA.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary float" id="openReelCreator" aria-label="Crear Reel">
+          🎥 Crea tu Reel Profesional <span class="slide">▶</span>
+        </button>
+        <button class="btn btn-outline" id="scrollJobs" aria-label="Encontrar trabajo">💼 Encuentra Trabajo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid layout -->
+  <div class="grid" role="main">
+    <!-- left column -->
+    <aside class="left-col" aria-label="Columna izquierda">
+      <div class="card profile" aria-hidden="false">
+        <div class="avatar">AJ</div>
+        <div>
+          <div style="font-weight:800">Ángel Chávez</div>
+          <div style="font-size:13px;color:var(--muted)">Postulante · Perú</div>
+          <div class="badges" aria-hidden="true">
+            <div class="badge">Perfil completo</div>
+            <div class="badge">Top comunicador</div>
+            <div class="badge">Insignia IA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" aria-live="polite">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Eventos próximos</div>
+          <div style="font-size:12px;color:var(--muted)">Ver todos</div>
+        </div>
+        <div id="eventsList" style="margin-top:10px" class="events-list"></div>
+      </div>
+
+      <div class="card">
+        <div style="font-weight:700">Gamificación</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:6px">Acciones, insignias y desafíos semanales.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+          <div class="badge">Perfil completo</div>
+          <div class="badge">Pitch ganador</div>
+          <div class="badge">Top 5% activ.</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- center content -->
+    <main>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="tabs" role="tablist" aria-label="Secciones">
+          <div class="tab active" data-tab="feed" role="tab">Feed</div>
+          <div class="tab" data-tab="reels" role="tab">Reels</div>
+          <div class="tab" data-tab="matches" role="tab">Match IA</div>
+          <div class="tab" data-tab="cv" role="tab">IA - CV</div>
+          <div class="tab" data-tab="jobs" role="tab">Ofertas</div>
+          <div class="tab" data-tab="events" role="tab">Eventos</div>
+        </div>
+
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn btn-outline" id="newPostBtn" title="Publicar">+ Publicar</button>
+          <button class="btn btn-primary" id="newReelBtn" title="Subir Reel">🎥 Subir Reel</button>
+        </div>
+      </div>
+
+      <!-- FEED -->
+      <section id="feed" class="card" style="margin-top:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Comunidad</div>
+          <div style="font-size:13px;color:var(--muted)">Comparte logros, busca socios y aprende</div>
+        </div>
+
+        <div style="margin-top:12px">
+          <div style="margin-bottom:12px">
+            <textarea id="postInput" placeholder="¿Qué compartes hoy?" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(7,24,58,0.04);resize:none;min-height:84px"></textarea>
+            <div style="display:flex;justify-content:space-between;margin-top:10px;align-items:center">
+              <div style="display:flex;gap:8px">
+                <button class="icon-btn" title="Adjuntar media">📎</button>
+                <button class="icon-btn" title="Etiquetar">🏷️</button>
+                <button class="icon-btn" title="Añadir ubicación">📍</button>
+              </div>
+              <div>
+                <button class="btn btn-primary" id="publishBtn">Publicar</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="postsContainer"></div>
+        </div>
+      </section>
+
+      <!-- REELS -->
+      <section id="reels" class="card" style="margin-top:12px;display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Reels laborales</div>
+          <div style="font-size:13px;color:var(--muted)">Videos cortos con subtítulos automáticos (IA)</div>
+        </div>
+
+        <div style="margin-top:12px">
+          <div class="reels" id="reelsContainer">
+            <div class="reel" data-author="María · Diseñadora">
+              <video loop muted playsinline src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+              <div class="meta">
+                <div>María · Diseñadora</div>
+                <div style="font-weight:700">▶ 12k</div>
+              </div>
+            </div>
+            <div class="reel" data-author="Juan · Dev">
+              <video loop muted playsinline src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+              <div class="meta">
+                <div>Juan · Dev</div>
+                <div style="font-weight:700">▶ 4.1k</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MATCHS -->
+      <section id="matches" class="card" style="margin-top:12px;display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Conexiones sugeridas</div>
+          <div style="font-size:13px;color:var(--muted)">La IA sugiere perfiles y reclutadores</div>
+        </div>
+
+        <div style="margin-top:12px">
+          <div class="match-grid" id="matchGrid"></div>
+        </div>
+      </section>
+
+      <!-- CV IA -->
+      <section id="cv" class="card" style="margin-top:12px;display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">IA: Optimiza tu CV</div>
+          <div style="font-size:13px;color:var(--muted)">Sube tu CV y la IA generará perfil y carta de presentación</div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+          <div style="flex:1;min-width:260px">
+            <input id="cvFile" type="file" accept=".pdf,.doc,.docx" style="display:block;margin-bottom:12px"/>
+            <button class="btn btn-primary" id="processCvBtn">Procesar CV (IA)</button>
+            <div id="cvStatus" style="margin-top:10px;color:var(--muted)"></div>
+          </div>
+
+          <div style="width:360px;min-width:240px">
+            <div style="font-weight:700">Perfil generado</div>
+            <div id="generatedProfile" style="margin-top:8px;color:var(--muted)">Aquí aparecerá el resumen profesional creado por IA.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- JOBS -->
+      <section id="jobs" class="card" style="margin-top:12px;display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Encuentra trabajo</div>
+          <div style="font-size:13px;color:var(--muted)">Filtra por palabra, ubicación o categoría</div>
+        </div>
+
+        <div class="jobs-filter" style="margin-top:12px">
+          <input id="jobSearch" placeholder="Buscar (ej. 'marketing remoto')" style="padding:10px;border-radius:10px;border:1px solid rgba(7,24,58,0.04);flex:1"/>
+          <select id="jobCategory" style="padding:10px;border-radius:10px;border:1px solid rgba(7,24,58,0.04)">
+            <option value="">Todas</option>
+            <option>Diseño</option><option>Marketing</option><option>Desarrollo</option><option>Ventas</option>
+          </select>
+          <button class="btn btn-primary" id="filterJobsBtn">Buscar</button>
+        </div>
+
+        <div class="job-grid" id="jobGrid" style="margin-top:12px"></div>
+      </section>
+
+      <!-- EVENTS -->
+      <section id="events" class="card" style="margin-top:12px;display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Eventos y ferias</div>
+          <div style="font-size:13px;color:var(--muted)">Charlas, transmisiones y speed-networking</div>
+        </div>
+
+        <div style="margin-top:12px" id="eventsGrid"></div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- Floating Action Button -->
+<button class="fab" id="fab" aria-label="Crear publicación">＋</button>
+
+<footer>
+  © 2025 Laboralink — Innovación en reclutamiento · Hecho con ❤️
+</footer>
+
+<script>
+/* ---------- UI: Tabs ---------- */
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const name = tab.dataset.tab;
+    ['feed','reels','matches','cv','jobs','events'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.style.display = id === name ? '' : 'none';
+    });
+    window.scrollTo({top:120,behavior:'smooth'});
+  });
+});
+
+/* ---------- HERO CTA ---------- */
+document.getElementById('openReelCreator').addEventListener('click', ()=> {
+  document.querySelector('.tab[data-tab="reels"]').click();
+  // open mock uploader
+  setTimeout(()=> alert('Abrir creador de Reel (simulación): sube un video, añade subtítulos y publica.'), 150);
+});
+document.getElementById('scrollJobs').addEventListener('click', ()=> {
+  document.querySelector('.tab[data-tab="jobs"]').click();
+});
+
+/* ---------- Posts: sample + publish ---------- */
+const postsContainer = document.getElementById('postsContainer');
+const samplePosts = [
+  {author:'María', role:'Diseñadora', text:'Case study UX sobre checkout — feedback please 🙏', time:'2h', likes:24, applauds:5},
+  {author:'Carlos', role:'Dev', text:'¿Qué librería recomiendan para animaciones en React?', time:'4h', likes:18, applauds:2},
+];
+
+function renderPosts(){
+  postsContainer.innerHTML = '';
+  // newest first
+  samplePosts.slice().reverse().forEach((p, idx)=>{
+    const div = document.createElement('div');
+    div.className = 'post';
+    div.innerHTML = `
+      <div class="p-left">
+        <div class="mini-avatar" aria-hidden="true">${p.author[0]}</div>
+      </div>
+      <div class="p-body">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="font-weight:800">${p.author}</div>
+          <div style="font-size:13px;color:var(--muted)">${p.role}</div>
+          <div style="margin-left:auto;color:var(--muted);font-size:13px">${p.time}</div>
+        </div>
+        <div style="margin-top:8px">${escapeHtml(p.text)}</div>
+        <div class="p-actions">
+          <div class="reaction" data-type="like" data-idx="${idx}">
+            <span class="emoji">👍</span> <span class="count">${p.likes}</span>
+          </div>
+          <div class="reaction" data-type="applaud" data-idx="${idx}">
+            <span class="emoji">👏</span> <span class="count">${p.applauds}</span>
+          </div>
+          <button class="reaction" style="margin-left:auto">💬 Comentar</button>
+        </div>
+      </div>
+    `;
+    postsContainer.appendChild(div);
+  });
+
+  // attach reaction handlers
+  document.querySelectorAll('.reaction[data-type]').forEach(btn=>{
+    btn.onclick = function(e){
+      const type = this.dataset.type;
+      const idx = parseInt(this.dataset.idx);
+      if(type==='like') samplePosts[idx].likes++;
+      if(type==='applaud') samplePosts[idx].applauds++;
+      // animate
+      this.classList.add('animate');
+      setTimeout(()=> this.classList.remove('animate'), 400);
+      renderPosts(); // re-render to update counts (simple approach)
+    };
+  });
+}
+renderPosts();
+
+document.getElementById('publishBtn').addEventListener('click', ()=>{
+  const text = document.getElementById('postInput').value.trim();
+  if(!text) return alert('Escribe algo para publicar.');
+  samplePosts.push({author:'Tú', role:'Postulante', text, time:'Ahora', likes:0, applauds:0});
+  document.getElementById('postInput').value='';
+  renderPosts();
+  alert('Publicado en la comunidad (simulación).');
+});
+
+/* ---------- Reels: autoplay on hover ---------- */
+document.querySelectorAll('.reel video').forEach(v=>{
+  v.addEventListener('mouseenter', ()=> {
+    v.play();
+    v.setAttribute('playsinline','');
+  });
+  v.addEventListener('mouseleave', ()=> v.pause());
+});
+
+/* ---------- Matches ---------- */
+const matches = [
+  {name:'Lucía', role:'Recruiter - Marketing', comp:'EmpresaX', score:91, about:'Busca talento en marketing digital con 2+ años.'},
+  {name:'Diego', role:'Fullstack Lead', comp:'StartupY', score:84, about:'Interesado en front-end y product thinking.'},
+  {name:'Sofía', role:'Hiring Manager', comp:'AgenciaZ', score:77, about:'Talento con portafolio creativo.'},
+];
+const matchGrid = document.getElementById('matchGrid');
+function renderMatches(){
+  matchGrid.innerHTML='';
+  matches.forEach((m,i)=>{
+    const el = document.createElement('div');
+    el.className='match-card';
+    el.innerHTML = `
+      <div style="font-weight:800">${m.name}</div>
+      <div style="font-size:13px;color:var(--muted)">${m.role} · ${m.comp}</div>
+      <div style="margin-top:8px;color:var(--muted);font-size:13px">${m.about}</div>
+      <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
+        <div style="font-weight:900;color:var(--accent)">${m.score}%</div>
+        <button class="btn btn-primary connectBtn">Conectar</button>
+        <button class="btn btn-outline skipBtn">Saltar</button>
+      </div>
+    `;
+    matchGrid.appendChild(el);
+  });
+}
+renderMatches();
+document.addEventListener('click', (e)=>{
+  if(e.target.closest('.connectBtn')) alert('Solicitud de conexión enviada (simulación).');
+  if(e.target.closest('.skipBtn')) alert('Siguiente sugerencia (simulación).');
+});
+
+/* ---------- Jobs ---------- */
+const jobs = [
+  {title:'Diseñador UX', company:'Studio A', loc:'Lima', cat:'Diseño'},
+  {title:'Marketing Digital', company:'BrandCo', loc:'Remoto', cat:'Marketing'},
+  {title:'Frontend React', company:'DevLab', loc:'Lima', cat:'Desarrollo'},
+  {title:'Ejecutivo de Ventas', company:'VentasYA', loc:'Lima', cat:'Ventas'}
+];
+const jobGrid = document.getElementById('jobGrid');
+function renderJobs(list = jobs){
+  jobGrid.innerHTML = '';
+  list.forEach(j=>{
+    const d = document.createElement('div');
+    d.className = 'job';
+    d.innerHTML = `
+      <div>
+        <div style="font-weight:800">${j.title}</div>
+        <div style="font-size:13px;color:var(--muted)">${j.company} · ${j.loc}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+        <div style="font-weight:800;color:var(--accent)">Aplicar</div>
+        <div style="font-size:12px;color:var(--muted)">Ver</div>
+      </div>
+    `;
+    jobGrid.appendChild(d);
+  });
+}
+renderJobs();
+
+document.getElementById('filterJobsBtn').addEventListener('click', ()=>{
+  const q = (document.getElementById('jobSearch').value || '').toLowerCase();
+  const cat = document.getElementById('jobCategory').value;
+  const filtered = jobs.filter(j=>{
+    return (j.title.toLowerCase().includes(q) || j.company.toLowerCase().includes(q) || j.loc.toLowerCase().includes(q))
+      && (cat === '' || j.cat === cat);
+  });
+  renderJobs(filtered);
+});
+
+/* ---------- CV processing (mock IA) ---------- */
+document.getElementById('processCvBtn').addEventListener('click', ()=>{
+  const file = document.getElementById('cvFile').files[0];
+  const status = document.getElementById('cvStatus');
+  const out = document.getElementById('generatedProfile');
+  if(!file) return alert('Sube tu CV (PDF/DOCX).');
+  status.textContent = 'Procesando CV con IA… (simulación)';
+  out.textContent = '';
+  setTimeout(()=>{
+    status.textContent = 'Listo — perfil generado';
+    out.innerHTML = `<strong>Resumen profesional:</strong> Ingeniero de software con 3 años en frontend (React), foco en UX y accesibilidad. <br><strong>Sugerencias:</strong> Frontend React, Product Engineer. <br><button class="btn btn-primary" onclick="document.querySelector('.tab[data-tab=\\'jobs\\']').click()">Ver oportunidades sugeridas</button>`;
+  }, 1400);
+});
+
+/* ---------- Events ---------- */
+const events = [
+  {title:'Feria Laboral Tech', date:'10 Nov 2025', type:'Feria', desc:'Conecta con empresas tech líderes.'},
+  {title:'Charla: Pitch efectivo', date:'15 Nov 2025', type:'Webinar', desc:'Mejora tu pitch en 5 pasos.'}
+];
+const eventsList = document.getElementById('eventsList');
+const eventsGrid = document.getElementById('eventsGrid');
+function renderEvents(){
+  eventsList.innerHTML=''; eventsGrid.innerHTML='';
+  events.forEach(ev=>{
+    const li = document.createElement('div'); li.style.display='flex'; li.style.justifyContent='space-between'; li.style.marginBottom='8px';
+    li.innerHTML = `<div><div style="font-weight:800">${ev.title}</div><div style="font-size:13px;color:var(--muted)">${ev.date} · ${ev.type}</div></div><div><button class="btn btn-primary joinEvent">Unirme</button></div>`;
+    eventsList.appendChild(li);
+
+    const card = document.createElement('div'); card.className='card'; card.style.marginBottom='10px';
+    card.innerHTML = `<div style="display:flex;justify-content:space-between"><div><div style="font-weight:800">${ev.title}</div><div style="font-size:13px;color:var(--muted)">${ev.date} · ${ev.type}</div></div><div><button class="btn btn-primary joinEvent">Unirme</button></div></div><div style="margin-top:8px;color:var(--muted)">${ev.desc}</div>`;
+    eventsGrid.appendChild(card);
+  });
+  document.querySelectorAll('.joinEvent').forEach(b=>b.addEventListener('click', ()=> alert('Te uniste al evento (simulación).')));
+}
+renderEvents();
+
+/* ---------- FAB behavior ---------- */
+document.getElementById('fab').addEventListener('click', ()=>{
+  // open compose in feed tab
+  document.querySelector('.tab[data-tab="feed"]').click();
+  const area = document.getElementById('postInput');
+  area.focus();
+  area.style.boxShadow = '0 8px 28px rgba(14,165,161,0.12)';
+  setTimeout(()=> area.style.boxShadow = '', 900);
+});
+
+/* ---------- Misc UX ---------- */
+// global search: filter posts & jobs
+document.getElementById('globalSearch').addEventListener('input', (e)=>{
+  const q = e.target.value.toLowerCase();
+  // filter posts by text, author, role
+  const filteredPosts = samplePosts.filter(p => p.author.toLowerCase().includes(q) || p.text.toLowerCase().includes(q) || p.role.toLowerCase().includes(q));
+  postsContainer.innerHTML = '';
+  filteredPosts.slice().reverse().forEach((p, idx)=>{
+    const div = document.createElement('div'); div.className='post';
+    div.innerHTML = `<div class="p-left"><div class="mini-avatar">${p.author[0]}</div></div><div class="p-body"><div style="font-weight:800">${p.author}</div><div style="margin-top:6px">${escapeHtml(p.text)}</div></div>`;
+    postsContainer.appendChild(div);
+  });
+  // filter jobs
+  const filteredJobs = jobs.filter(j=> j.title.toLowerCase().includes(q) || j.company.toLowerCase().includes(q) || j.loc.toLowerCase().includes(q));
+  renderJobs(filteredJobs);
+});
+
+// small helpers
+function escapeHtml(unsafe) {
+  return unsafe.replace(/[&<"'>]/g, function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m];});
+}
+
+/* initial active tab */
+document.addEventListener('DOMContentLoaded', ()=> {
+  document.querySelector('.tab[data-tab="feed"]').click();
+});
+</script>
+</body>
+</html>

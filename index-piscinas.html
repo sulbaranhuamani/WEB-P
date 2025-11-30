@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sulbaran Piscinas | Piscinas, Piletas y Jacuzzis</title>
+    <link rel="stylesheet" href="./css/styles-piscinas.css">
+</head>
+<body>
+
+<!-- NAVBAR + HERO -->
+<header class="hero">
+    <nav class="navbar container">
+        <h1 class="logo">Sulbaran Piscinas</h1>
+        <div class="nav-actions">
+            <a href="#servicios" class="nav-link">Servicios</a>
+            <a href="#cotizador" class="nav-link">Cotizar</a>
+            <a href="#contacto" class="btn-nav">WhatsApp</a>
+        </div>
+    </nav>
+
+    <div class="hero-content container">
+        <div class="hero-text">
+            <h2>Construcción y mantenimiento de piscinas, piletas y jacuzzis</h2>
+            <p>
+                Diseños modernos, equipos profesionales y asesoría completa
+                para casas, hoteles y proyectos inmobiliarios.
+            </p>
+            <a href="https://wa.me/51XXXXXXXXX" class="btn-primary">
+                Cotiza tu proyecto
+            </a>
+        </div>
+        <div class="hero-card">
+            <p class="hero-label">Servicio destacado</p>
+            <h3>Piscina residencial 4x4 m</h3>
+            <p class="hero-price">Desde S/ 18,000*</p>
+            <p class="hero-note">Incluye estructura, sistema de filtrado y luces LED básicas.</p>
+        </div>
+    </div>
+</header>
+
+<!-- SERVICIOS PRINCIPALES -->
+<section id="servicios" class="section container">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <p class="section-subtitle">
+        Diseñamos y construimos soluciones completas de agua para tu proyecto.
+    </p>
+
+    <div class="grid-3">
+        <article class="card">
+            <div class="card-image" style="background-image: url('./img/piscina1.jpg');"></div>
+            <h3>Piscinas</h3>
+            <p>
+                Piscinas de concreto armado y fibra, adaptadas al espacio y estilo de tu vivienda
+                o negocio. Equipos de calidad y acabados profesionales.
+            </p>
+            <ul class="card-list">
+                <li>Diseño personalizado</li>
+                <li>Sistema de filtrado y recirculación</li>
+                <li>Luces LED subacuáticas</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <div class="card-image" style="background-image: url('./img/pileta.jpg');"></div>
+            <h3>Piletas decorativas</h3>
+            <p>
+                Piletas para jardines, plazas, patios y entradas principales.
+                Jugamos con caídas de agua, niveles y efectos visuales.
+            </p>
+            <ul class="card-list">
+                <li>Cascadas y caídas de agua</li>
+                <li>Boquillas de efecto</li>
+                <li>Iluminación ambiental</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <div class="card-image" style="background-image: url('./img/jacuzzi.jpg');"></div>
+            <h3>Jacuzzis</h3>
+            <p>
+                Jacuzzis empotrados o elevados, ideales para terrazas,
+                spa en casa o proyectos hoteleros.
+            </p>
+            <ul class="card-list">
+                <li>Hidromasaje</li>
+                <li>Control de temperatura</li>
+                <li>Diseños compactos o premium</li>
+            </ul>
+        </article>
+    </div>
+</section>
+
+<!-- SISTEMAS Y EQUIPOS -->
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Sistemas, equipos y mantenimiento</h2>
+        <div class="grid-3">
+            <article class="card-min">
+                <h3>Filtros y bombas</h3>
+                <p>
+                    Instalación de filtros FC-2375, FC-2440, bombas de 1 HP y 1.5 HP,
+                    válvulas y tuberías completas.
+                </p>
+            </article>
+
+            <article class="card-min">
+                <h3>Cloradores y automatización</h3>
+                <p>
+                    Cloradores automáticos, dosificación de químicos y sistemas
+                    que reducen el mantenimiento manual.
+                </p>
+            </article>
+
+            <article class="card-min">
+                <h3>Planes de mantenimiento</h3>
+                <p>
+                    Visitas periódicas, limpieza, revisión de equipos y corrección
+                    de fugas o problemas de agua.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="section container">
+    <h2 class="section-title">Galería de proyectos</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item" style="background-image: url('./img/p1.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('./img/p2.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('./img/p3.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('./img/p4.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('./img/p5.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('./img/p6.jpg');"></div>
+    </div>
+</section>
+
+<!-- COTIZADOR -->
+<section id="cotizador" class="section section-alt">
+    <div class="container cotizador">
+        <div>
+            <h2 class="section-title">Cotiza tu piscina, pileta o jacuzzi</h2>
+            <p class="section-subtitle">
+                Llena este formulario y te respondemos por WhatsApp con una estimación inicial.
+            </p>
+        </div>
+
+        <form id="quoteForm" class="quote-form">
+            <input type="text" id="name" placeholder="Nombre" required>
+            <select id="tipo" required>
+                <option value="">Tipo de proyecto</option>
+                <option value="Piscina">Piscina</option>
+                <option value="Pileta">Pileta decorativa</option>
+                <option value="Jacuzzi">Jacuzzi</option>
+            </select>
+            <input type="text" id="size" placeholder="Tamaño aprox. (ej: 4x4 m)" required>
+            <input type="text" id="location" placeholder="Distrito / Ciudad" required>
+            <textarea id="details" placeholder="Detalles adicionales (profundidad, acabados, luces, etc.)"></textarea>
+            <button type="submit" class="btn-primary full-width">Enviar a WhatsApp</button>
+        </form>
+    </div>
+</section>
+
+<!-- CONTACTO / FOOTER -->
+<footer id="contacto" class="footer">
+    <div class="container footer-content">
+        <div>
+            <h3>Sulbaran Piscinas</h3>
+            <p>Construcción de piscinas, piletas y jacuzzis en Lima y Ayacucho.</p>
+        </div>
+        <div class="footer-info">
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/51XXXXXXXXX">+51 XXXXXXXX</a></p>
+            <p><strong>Correo:</strong> contacto@sulbaranpiscinas.com</p>
+        </div>
+    </div>
+    <p class="footer-copy">© 2025 Sulbaran Piscinas. Todos los derechos reservados.</p>
+</footer>
+
+<script src="./piscinas-js.js"></script>
+</body>
+</html>

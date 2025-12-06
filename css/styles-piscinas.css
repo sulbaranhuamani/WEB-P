@@ -321,3 +321,168 @@ body {
         justify-content: space-between;
     }
 }
+
+
+
+/* --- Estilos para la Calculadora de Piscinas --- */
+
+.calculator-box {
+    margin-top: 3rem; /* Espacio de separación de los cuadros de arriba */
+    padding: 2rem;
+    background-color: #3f51b5; /* Fondo azul, ajusta si tienes otro color principal */
+    color: #ffffff; /* Letras blancas para contraste */
+    border-radius: 8px;
+    text-align: center;
+    /* Para que ocupe casi todo el ancho con un pequeño margen */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calculator-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.calculator-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilo para el botón secundario (btn-secondary) que usamos en la caja */
+.btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: #ff9800; /* Color de acento (naranja) */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none; /* Asegura que no tenga borde por defecto */
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #f57c00;
+}
+
+
+/* =======================================================
+   ESTILOS DE LA CALCULADORA FUNCIONAL (DARK MODE)
+   ======================================================= */
+
+/* 1. Contenedor Principal de la Calculadora */
+.calculator-form-section {
+    margin-top: 4rem;
+    padding: 2.5rem 2rem;
+    background-color: #020617; /* Fondo oscuro igual al resto de secciones */
+    border: 1px solid #1e293b; /* Borde sutil */
+    border-radius: 20px;
+    color: #e5e7eb;
+}
+
+/* Centrar textos de cabecera de esta sección */
+.calculator-form-section .section-title,
+.calculator-form-section .section-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2. El Formulario (Grid Flexible) */
+.calculator-form-section .quote-form {
+    max-width: 700px;
+    margin: 2rem auto 0;
+    /* Usamos Flexbox para acomodar los inputs */
+    display: flex;
+    flex-wrap: wrap; /* Permite que bajen a la siguiente linea */
+    gap: 15px;
+
+    /* Reseteamos estilos heredados */
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+/* 3. Títulos internos (h4) */
+.calculator-form-section h4 {
+    width: 100%; /* Ocupa toda la fila */
+    text-align: center;
+    color: #38bdf8; /* Azul claro */
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 4. Estilo de Inputs y Selects */
+.calculator-form-section input[type="number"],
+.calculator-form-section select {
+    flex: 1 1 30%; /* Intentan ocupar 1/3 del ancho */
+    min-width: 180px; /* Tamaño mínimo para no verse aplastados en móviles */
+
+    background: #0f172a; /* Fondo azul muy oscuro */
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 12px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.calculator-form-section input:focus,
+.calculator-form-section select:focus {
+    border-color: #38bdf8; /* Borde azul al escribir */
+}
+
+/* Contenedor especial para dimensiones (Largo, Ancho, Diametro) */
+.campos-dimensiones {
+    display: flex;
+    gap: 15px;
+    width: 100%; /* Ocupa toda la fila */
+}
+
+.campos-dimensiones input {
+    flex: 1; /* Se reparten el espacio equitativamente */
+}
+
+/* 5. Botón de Calcular */
+.calculator-form-section button {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 14px;
+    font-size: 1.1rem;
+}
+
+/* 6. Caja de Resultados */
+.calculator-results {
+    max-width: 700px;
+    margin: 2rem auto 0;
+    padding: 1.5rem;
+    background-color: #1e293b; /* Gris azulado para destacar del fondo negro */
+    border-radius: 12px;
+    border-left: 6px solid #38bdf8; /* Línea de acento a la izquierda */
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+.calculator-results strong {
+    color: #38bdf8;
+    font-weight: 700;
+}
+
+.calculator-results h4 {
+    text-align: left; /* Títulos dentro de resultados a la izquierda */
+    margin-top: 1rem;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 5px;
+}
+
+
+
+

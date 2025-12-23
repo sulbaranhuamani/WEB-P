@@ -1,232 +1,250 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Costa Sur | Piscinas, Piletas y Jacuzzis</title>
     <link rel="stylesheet" href="./css/styles-piscinas.css">
 </head>
+
 <body>
 
-<!-- NAVBAR + HERO -->
-<header class="hero">
-    <nav class="navbar container">
-        <h1 class="logo">Costa Sur | piscinas</h1>
-        <div class="nav-actions">
-            <a href="#servicios" class="nav-link">Servicios</a>
-            <a href="#cotizador" class="nav-link">Cotizar</a>
-            <a href="#contacto" class="btn-nav">WhatsApp</a>
-        </div>
-    </nav>
+    <!-- NAVBAR + HERO -->
+    <header class="hero">
+        <nav class="navbar container">
+            <h1 class="logo">Costa Sur | piscinas</h1>
+            <div class="nav-actions">
+                <a href="#servicios" class="nav-link">Servicios</a>
+                <a href="#cotizador" class="nav-link">Cotizar</a>
+                <a href="#contacto" class="btn-nav">WhatsApp</a>
+            </div>
+        </nav>
 
-    <div class="hero-content container">
-        <div class="hero-text">
-            <h2>Construcción y mantenimiento de piscinas, piletas y jacuzzis</h2>
-            <p>
-                Diseños modernos, equipos profesionales y asesoría completa
-                para casas, hoteles y proyectos inmobiliarios.
-            </p>
-            <a href="https://wa.me/51906892853" class="btn-primary">
-                Cotiza tu proyecto
-            </a>
-        </div>
-        <div class="hero-card">
-            <p class="hero-label">Servicio destacado</p>
-            <h3>Piscina residencial 4x4 m</h3>
-            <p class="hero-price">Desde S/ 18,000*</p>
-            <p class="hero-note">Incluye estructura, sistema de filtrado y luces LED básicas.</p>
-        </div>
-    </div>
-</header>
-
-<!-- SERVICIOS PRINCIPALES -->
-<section id="servicios" class="section container">
-    <h2 class="section-title">Nuestros Servicios</h2>
-    <p class="section-subtitle">
-        Diseñamos y construimos soluciones completas de agua para tu proyecto.
-    </p>
-
-    <div class="grid-3">
-        <!-- Secciones -->
-        <article class="card">
-            <div class="card-image" style="background-image: url('./img/P00L.jpg');"></div>
-            <h3>Piscinas</h3>
-            <p>
-                Piscinas de concreto armado y fibra, adaptadas al espacio y estilo de tu vivienda
-                o negocio. Equipos de calidad y acabados profesionales.
-            </p>
-            <ul class="card-list">
-                <li>Diseño personalizado</li>
-                <li>Sistema de filtrado y recirculación</li>
-                <li>Luces LED subacuáticas</li>
-            </ul>
-        </article>
-
-        <article class="card">
-            <div class="card-image" style="background-image: url('./img/P11-0-J.jpg');"></div>
-            <h3>Piletas decorativas</h3>
-            <p>
-                Piletas para jardines, plazas, patios y entradas principales.
-                Jugamos con caídas de agua, niveles y efectos visuales.
-            </p>
-            <ul class="card-list">
-                <li>Cascadas y caídas de agua</li>
-                <li>Boquillas de efecto</li>
-                <li>Iluminación ambiental</li>
-            </ul>
-        </article>
-
-        <article class="card">
-            <div class="card-image" style="background-image: url('./img/J4-0.jpg');"></div>
-            <h3>Jacuzzis</h3>
-            <p>
-                Jacuzzis empotrados o elevados, ideales para terrazas,
-                spa en casa o proyectos hoteleros.
-            </p>
-            <ul class="card-list">
-                <li>Hidromasaje</li>
-                <li>Control de temperatura</li>
-                <li>Diseños compactos o premium</li>
-            </ul>
-        </article>
-    </div>
-</section>
-
-<!-- SISTEMAS Y EQUIPOS Y CALCULADORA-ONE-->
-
-<section class="section section-alt">
-    <div class="container">
-        <h2 class="section-title">Sistemas, equipos y mantenimiento</h2>
-        <div class="grid-3">
-            <article class="card-min">
-                <h3>Filtros y bombas</h3>
+        <div class="hero-content container">
+            <div class="hero-text">
+                <h2>Construcción y mantenimiento de piscinas, piletas y jacuzzis</h2>
                 <p>
-                    Instalación de filtros FC-2375, FC-2440, bombas de 1 HP y 1.5 HP,
-                    válvulas y tuberías completas.
+                    Diseños modernos, equipos profesionales y asesoría completa
+                    para casas, hoteles y proyectos inmobiliarios.
                 </p>
-            </article>
-
-            <article class="card-min">
-                <h3>Cloradores y automatización</h3>
-                <p>
-                    Cloradores automáticos, dosificación de químicos y sistemas
-                    que reducen el mantenimiento manual.
-                </p>
-            </article>
-
-            <article class="card-min">
-                <h3>Planes de mantenimiento</h3>
-                <p>
-                    Visitas periódicas, limpieza, revisión de equipos y corrección
-                    de fugas o problemas de agua.
-                </p>
-            </article>
-        </div>
-
-
-
-        <div class="calculator-box">
-            <h3 class="calculator-title">¿Cuántos químicos necesita tu piscina? 📐</h3>
-            <p class="calculator-subtitle">Calcula el volumen y la dosis de cloro o pH necesario según las medidas de tu piscina.</p>
-            <a href="#calculadora" class="btn-secondary">Ir a la Calculadora</a>
-        </div>
-        <div id="calculadora" class="calculator-form-section">
-            <h3 class="section-title">Calculadora de Volumen y Dosis</h3>
-            <p class="section-subtitle">Introduce las medidas en metros (m) para calcular el volumen y la dosis de los químicos principales.</p>
-
-            <form id="poolCalculator" class="quote-form">
-
-                <h4>1. Selecciona la forma y Profundidad</h4>
-                <select id="forma" required onchange="cambiarCamposForma()">
-                    <option value="rectangular">Rectangular / Cuadrada</option>
-                    <option value="circular">Circular / Redonda</option>
-                    <option value="ovalada">Ovalada / Elíptica</option>
-                </select>
-                <input type="number" id="profundidad" placeholder="Profundidad promedio (m)" step="0.1" required>
-
-                <div id="campos-dimensiones" class="campos-dimensiones">
-                    <input type="number" id="largo" placeholder="Largo (m)" step="0.1" required>
-                    <input type="number" id="ancho" placeholder="Ancho (m)" step="0.1" required>
-                    <input type="number" id="diametro" placeholder="Diámetro (m)" step="0.1" style="display: none;">
-                </div>
-
-                <h4>2. Dosis por Producto (Valores estándar recomendados)</h4>
-                <p class="section-subtitle">concentracion de cloro estandar:</p>
-                <input type="number" id="concentracion-cloro" placeholder="Concentración Cloro (%) Ej: 65" value="65" step="0.1">
-                <p class="section-subtitle">concentracion de sulfato de aluminio estandar:</p>
-                <input type="number" id="dosis-sulfato-aluminio" placeholder="Dosis S.Aluminio (g/m³)" value="15" step="0.1">
-                <p class="section-subtitle">concentracion de sulfato de cobre estandar:</p>
-                <input type="number" id="dosis-sulfato-cobre" placeholder="Dosis S.Cobre (g/m³)" value="0.5" step="0.1">
-
-                <button type="button" class="btn-primary full-width" onclick="calcularDosis()">Calcular Dosis Requerida</button>
-            </form>
-
-            <div id="results" class="calculator-results">
+                <a href="https://wa.me/51906892853" class="btn-primary">
+                    Cotiza tu proyecto
+                </a>
+            </div>
+            <div class="hero-card">
+                <p class="hero-label">Servicio destacado</p>
+                <h3>Piscina residencial 4x4 m</h3>
+                <p class="hero-price">Desde S/ 18,000*</p>
+                <p class="hero-note">Incluye estructura, sistema de filtrado y luces LED básicas.</p>
             </div>
         </div>
+    </header>
 
-    </div>
-</section>
+    <!-- SERVICIOS PRINCIPALES -->
+    <section id="servicios" class="section container">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">
+            Diseñamos y construimos soluciones completas de agua para tu proyecto.
+        </p>
 
+        <div class="grid-3">
+            <!-- Secciones -->
+            <article class="card">
+                <img class="card-image" src="./img/P00L.jpg"
+                    alt="Diseño y construcción de piscinas de concreto y fibra">
+                <h3>Piscinas</h3>
+                <p>
+                    Piscinas de concreto armado y fibra, adaptadas al espacio y estilo de tu vivienda
+                    o negocio. Equipos de calidad y acabados profesionales.
+                </p>
+                <ul class="card-list">
+                    <li>Diseño personalizado</li>
+                    <li>Sistema de filtrado y recirculación</li>
+                    <li>Luces LED subacuáticas</li>
+                </ul>
+            </article>
 
+            <article class="card">
+                <img class="card-image" src="./img/P11-0-J.jpg"
+                    alt="Piletas decorativas con caídas de agua para jardines">
+                <h3>Piletas decorativas</h3>
+                <p>
+                    Piletas para jardines, plazas, patios y entradas principales.
+                    Jugamos con caídas de agua, niveles y efectos visuales.
+                </p>
+                <ul class="card-list">
+                    <li>Cascadas y caídas de agua</li>
+                    <li>Boquillas de efecto</li>
+                    <li>Iluminación ambiental</li>
+                </ul>
+            </article>
 
-    </div>
-</section>
-
-<!-- GALERÍA -->
-<section class="section container">
-    <h2 class="section-title">Galería de proyectos</h2>
-    <div class="gallery-grid">
-        <div class="gallery-item" style="background-image: url('./img/p1.jpg');"></div>
-        <div class="gallery-item" style="background-image: url('./img/p2.jpg');"></div>
-        <div class="gallery-item" style="background-image: url('./img/p3.jpg');"></div>
-        <div class="gallery-item" style="background-image: url('./img/p4.jpg');"></div>
-        <div class="gallery-item" style="background-image: url('./img/p5.jpg');"></div>
-        <div class="gallery-item" style="background-image: url('./img/p6.jpg');"></div>
-    </div>
-</section>
-
-<!-- COTIZADOR -->
-<section id="cotizador" class="section section-alt">
-    <div class="container cotizador">
-        <div>
-            <h2 class="section-title">Cotiza tu piscina, pileta o jacuzzi</h2>
-            <p class="section-subtitle">
-                Llena este formulario y te respondemos por WhatsApp con una estimación inicial.
-            </p>
+            <article class="card">
+                <img class="card-image" src="./img/J4-0.jpg" alt="Jacuzzis empotrados para terrazas y spa">
+                <h3>Jacuzzis</h3>
+                <p>
+                    Jacuzzis empotrados o elevados, ideales para terrazas,
+                    spa en casa o proyectos hoteleros.
+                </p>
+                <ul class="card-list">
+                    <li>Hidromasaje</li>
+                    <li>Control de temperatura</li>
+                    <li>Diseños compactos o premium</li>
+                </ul>
+            </article>
         </div>
+    </section>
 
-        <form id="quoteForm" class="quote-form">
-            <input type="text" id="name" placeholder="Nombre" required>
-            <select id="tipo" required>
-                <option value="">Tipo de proyecto</option>
-                <option value="Piscina">Piscina</option>
-                <option value="Pileta">Pileta decorativa</option>
-                <option value="Jacuzzi">Jacuzzi</option>
-            </select>
-            <input type="text" id="size" placeholder="Tamaño aprox. (ej: 4x4 m)" required>
-            <input type="text" id="location" placeholder="Distrito / Ciudad" required>
-            <textarea id="details" placeholder="Detalles adicionales (profundidad, acabados, luces, etc.)"></textarea>
-            <button type="submit" class="btn-primary full-width">Enviar a WhatsApp</button>
-        </form>
-    </div>
-</section>
+    <!-- SISTEMAS Y EQUIPOS Y CALCULADORA-ONE-->
 
-<!-- CONTACTO / FOOTER -->
-<footer id="contacto" class="footer">
-    <div class="container footer-content">
-        <div>
-            <h3>Sulbaran Piscinas</h3>
-            <p>Construcción de piscinas, piletas y jacuzzis en Lima y Ayacucho.</p>
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Sistemas, equipos y mantenimiento</h2>
+            <div class="grid-3">
+                <article class="card-min">
+                    <h3>Filtros y bombas</h3>
+                    <p>
+                        Instalación de filtros FC-2375, FC-2440, bombas de 1 HP y 1.5 HP,
+                        válvulas y tuberías completas.
+                    </p>
+                </article>
+
+                <article class="card-min">
+                    <h3>Cloradores y automatización</h3>
+                    <p>
+                        Cloradores automáticos, dosificación de químicos y sistemas
+                        que reducen el mantenimiento manual.
+                    </p>
+                </article>
+
+                <article class="card-min">
+                    <h3>Planes de mantenimiento</h3>
+                    <p>
+                        Visitas periódicas, limpieza, revisión de equipos y corrección
+                        de fugas o problemas de agua.
+                    </p>
+                </article>
+            </div>
+
+
+
+            <div class="calculator-box">
+                <h3 class="calculator-title">¿Cuántos químicos necesita tu piscina? 📐</h3>
+                <p class="calculator-subtitle">Calcula el volumen y la dosis de cloro o pH necesario según las medidas
+                    de tu piscina.</p>
+                <a href="#calculadora" class="btn-secondary">Ir a la Calculadora</a>
+            </div>
+            <div id="calculadora" class="calculator-form-section">
+                <h3 class="section-title">Calculadora de Volumen y Dosis</h3>
+                <p class="section-subtitle">Introduce las medidas en metros (m) para calcular el volumen y la dosis de
+                    los químicos principales.</p>
+
+                <form id="poolCalculator" class="quote-form">
+
+                    <h4>1. Selecciona la forma y Profundidad</h4>
+                    <select id="forma" required onchange="cambiarCamposForma()" aria-label="Forma de la piscina">
+                        <option value="rectangular">Rectangular / Cuadrada</option>
+                        <option value="circular">Circular / Redonda</option>
+                        <option value="ovalada">Ovalada / Elíptica</option>
+                    </select>
+                    <input type="number" id="profundidad" placeholder="Profundidad promedio (m)" step="0.1" required
+                        aria-label="Profundidad promedio (m)">
+
+                    <div id="campos-dimensiones" class="campos-dimensiones">
+                        <input type="number" id="largo" placeholder="Largo (m)" step="0.1" required
+                            aria-label="Largo (m)">
+                        <input type="number" id="ancho" placeholder="Ancho (m)" step="0.1" required
+                            aria-label="Ancho (m)">
+                        <input type="number" id="diametro" placeholder="Diámetro (m)" step="0.1" style="display: none;"
+                            aria-label="Diámetro (m)">
+                    </div>
+
+                    <h4>2. Dosis por Producto (Valores estándar recomendados)</h4>
+                    <p class="section-subtitle">concentracion de cloro estandar:</p>
+                    <input type="number" id="concentracion-cloro" placeholder="Concentración Cloro (%) Ej: 65"
+                        value="65" step="0.1" aria-label="Concentración Cloro (%)">
+                    <p class="section-subtitle">concentracion de sulfato de aluminio estandar:</p>
+                    <input type="number" id="dosis-sulfato-aluminio" placeholder="Dosis S.Aluminio (g/m³)" value="15"
+                        step="0.1" aria-label="Dosis S.Aluminio (g/m³)">
+                    <p class="section-subtitle">concentracion de sulfato de cobre estandar:</p>
+                    <input type="number" id="dosis-sulfato-cobre" placeholder="Dosis S.Cobre (g/m³)" value="0.5"
+                        step="0.1" aria-label="Dosis S.Cobre (g/m³)">
+
+                    <button type="button" class="btn-primary full-width" onclick="calcularDosis()">Calcular Dosis
+                        Requerida</button>
+                </form>
+
+                <div id="results" class="calculator-results">
+                </div>
+            </div>
+
         </div>
-        <div class="footer-info">
-            <p><strong>WhatsApp:</strong> <a href="https://wa.me/51XXXXXXXXX">+51 XXXXXXXX</a></p>
-            <p><strong>Correo:</strong> contacto@sulbaranpiscinas.com</p>
-        </div>
-    </div>
-    <p class="footer-copy">© 2025 Sulbaran Piscinas. Todos los derechos reservados.</p>
-</footer>
+    </section>
 
-<script src="./piscinas-js.js"></script>
+    <!-- GALERÍA -->
+    <section class="section container">
+        <h2 class="section-title">Galería de proyectos</h2>
+        <div class="gallery-grid">
+            <img class="gallery-item" src="./img/C-P0.jpg" alt="Proyecto de piscina residencial con acabados premium">
+            <img class="gallery-item" src="./img/C-P1.jpg" alt="Piscina moderna con iluminación LED">
+            <img class="gallery-item" src="./img/p3.jpg" alt="Diseño de piscina rectangular en jardín">
+            <img class="gallery-item" src="./img/p4.jpg" alt="Detalle de acabados en piscina">
+            <img class="gallery-item" src="./img/p5.jpg" alt="Vista nocturna de piscina iluminada">
+            <img class="gallery-item" src="./img/p6.jpg" alt="Area de recreación con piscina y deck">
+        </div>
+    </section>
+
+    <!-- COTIZADOR -->
+    <section id="cotizador" class="section section-alt">
+        <div class="container cotizador">
+            <div>
+                <h2 class="section-title">Cotiza tu piscina, pileta o jacuzzi</h2>
+                <p class="section-subtitle">
+                    Llena este formulario y te respondemos por WhatsApp con una estimación inicial.
+                </p>
+            </div>
+
+            <form id="quoteForm" class="quote-form">
+                <input type="text" id="name" placeholder="Nombre" required aria-label="Nombre">
+
+                <select id="tipo" required aria-label="Tipo de proyecto">
+                    <option value="">Tipo de proyecto</option>
+                    <option value="Piscina">Piscina</option>
+                    <option value="Pileta">Pileta decorativa</option>
+                    <option value="Jacuzzi">Jacuzzi</option>
+                </select>
+
+                <input type="text" id="size" placeholder="Tamaño aprox. (ej: 4x4 m)" required
+                    aria-label="Tamaño aprox.">
+
+                <input type="text" id="location" placeholder="Distrito / Ciudad" required
+                    aria-label="Distrito / Ciudad">
+
+                <textarea id="details" placeholder="Detalles adicionales (profundidad, acabados, luces, etc.)"
+                    aria-label="Detalles adicionales"></textarea>
+
+                <button type="submit" class="btn-primary full-width">Enviar a WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CONTACTO / FOOTER -->
+    <footer id="contacto" class="footer">
+        <div class="container footer-content">
+            <div>
+                <h3>Costa sur | piscinas</h3>
+                <p>Construcción de piscinas, piletas y jacuzzis en Lima y Ayacucho.</p>
+            </div>
+            <div class="footer-info">
+                <p><strong>WhatsApp:</strong> <a href="https://wa.me/51906892853">+51 906892853</a></p>
+                <p><strong>Correo:</strong> sulbaranhuamani@gmail.com</p>
+            </div>
+        </div>
+        <p class="footer-copy">© 2025 costa sur | Piscinas. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="./piscinas-js.js"></script>
 </body>
+
 </html>

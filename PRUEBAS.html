@@ -1,16 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proyectos — Sulbaran Huamani</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5X98WHSG');</script>
+</head>
+<body>
+    <header class="nav-wrap">
+        <nav class="nav">
+            <div class="brand"><a href="index.html">Sulbaran Huamani</a></div>
+            <div class="pill">
+                <a href="index.html">About me</a>
+                <a href="proyectos.html" class="active">Projects</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+        </nav>
+    </header>
 
-<link rel="stylesheet" href="css/PRUE.css.css">
+    <section class="hero-small" style="padding: 100px 0 50px; text-align: center; background: linear-gradient(180deg, #eef6ff 0%, #ffffff 100%);">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; color: #1a1a1a;">Mis Proyectos</h1>
+            <p style="color: #666; max-width: 600px; margin: 0 auto;">Una muestra de mi trabajo en sistemas, economía y emprendimiento.</p>
+        </div>
+    </section>
 
-<section class="hero-virgin">
-    <img class="hero-portrait" src="img/FP0.png" alt="Foto de Sulbaran Huamani">
+    <section class="project-list" style="padding: 50px 0;">
+        <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            
+            <div class="project-card" style="border: 1px solid #eee; border-radius: 15px; overflow: hidden; transition: transform 0.3s;">
+                <div style="background: #007bff; height: 180px; display: flex; align-items: center; justify-content: center; color: white;">
+                    <span style="font-size: 3rem;">💻</span>
+                </div>
+                <div style="padding: 20px;">
+                    <h3>Software de Gestión</h3>
+                    <p style="font-size: 0.9rem; color: #555;">Desarrollo de una plataforma para optimizar procesos administrativos.</p>
+                    <span style="display: inline-block; background: #eef6ff; color: #007bff; padding: 4px 10px; border-radius: 5px; font-size: 0.8rem;">Python / JS</span>
+                </div>
+            </div>
 
-    <h1 class="hero-name">Sulbaran Huamani</h1>
+            <div class="project-card" style="border: 1px solid #eee; border-radius: 15px; overflow: hidden; transition: transform 0.3s;">
+                <div style="background: #28a745; height: 180px; display: flex; align-items: center; justify-content: center; color: white;">
+                    <span style="font-size: 3rem;">📈</span>
+                </div>
+                <div style="padding: 20px;">
+                    <h3>Análisis de Mercado</h3>
+                    <p style="font-size: 0.9rem; color: #555;">Estudio econométrico sobre el impacto de las startups en Lima.</p>
+                    <span style="display: inline-block; background: #e8f5e9; color: #28a745; padding: 4px 10px; border-radius: 5px; font-size: 0.8rem;">Economía</span>
+                </div>
+            </div>
 
-    <p class="hero-blurb">
-        Estudiante de Ingeniería de Sistemas y Administración. Me entusiasman la tecnología,
-        los negocios y crear proyectos que aporten valor real.
-    </p>
+        </div>
+    </section>
 
-    <a class="hero-cta" href="#projects">Ver mis proyectos</a>
-    <!-- o: <a class="hero-cta" href="contact.html">Contáctame</a> -->
-</section>
+    <section class="mentions" style="padding: 80px 0; background-color: #f4f7f9;">
+        <div class="container" style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2 style="margin-bottom: 40px;">Agradecimientos Especiales</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
+                
+                <div style="max-width: 250px;">
+                    <div style="width: 80px; height: 80px; background: #ddd; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #777;">SH</div>
+                    <h4 style="margin: 5px 0;">Nombre del Mentor</h4>
+                    <p style="font-size: 0.85rem; color: #666;">"Por guiar mis primeros pasos en la programación y los sistemas."</p>
+                </div>
+
+                <div style="max-width: 250px;">
+                    <div style="width: 80px; height: 80px; background: #ddd; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #777;">PF</div>
+                    <h4 style="margin: 5px 0;">Nombre de Familiar/Amigo</h4>
+                    <p style="font-size: 0.85rem; color: #666;">"Por el apoyo incondicional en el desarrollo de mi carrera profesional."</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" style="padding: 40px 0; text-align: center; border-top: 1px solid #eee;">
+        <p>© <span id="year"></span> Sulbaran Huamani — Lima, Perú</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

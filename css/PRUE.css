@@ -1,0 +1,39 @@
+/* Configuración del fondo dinámico */
+.bg-interactive {
+    position: relative;
+    padding: 60px 0;
+    background-image: url('./img/POOL1.jpg'); /* Imagen inicial */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto parallax */
+    transition: background-image 0.8s ease-in-out; 
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+/* Capa oscura para que el texto resalte */
+.bg-interactive::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(2, 6, 23, 0.7); /* Azul muy oscuro transparente */
+    z-index: 1;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Ajuste de la rejilla de servicios */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}

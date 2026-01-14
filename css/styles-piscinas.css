@@ -19,6 +19,20 @@ body {
     padding: 0 16px;
 }
 
+/*
+    Organización del archivo:
+    1. Base (resets, tipografías, container)
+    2. Header / Hero / Navbar
+    3. Secciones generales y Grid
+    4. Cards / Gallery
+    5. Calculadora (estilos específicos)
+    6. Cotizador / Formatos de formulario
+    7. Footer
+    8. Responsive
+
+    Mantener este orden facilita encontrar reglas relacionadas con el marcado HTML.
+*/
+
 /* --------- HERO --------- */
 .hero {
     background: radial-gradient(circle at top left, #38bdf8 0, #0f172a 40%, #020617 100%);
@@ -230,6 +244,48 @@ body {
     border-radius: 12px;
     display: block;
 }
+/* --------- CALCULADORA (mover aquí) --------- */
+/* Estilos para la caja informativa de la calculadora y el botón secundario */
+/* Calculadora: versión compacta */
+.calculator-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #3f51b5;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calculator-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.35rem;
+}
+
+.calculator-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilo para el botón secundario (btn-secondary) que usamos en la caja */
+.btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: #ff9800; /* Color de acento (naranja) */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none; /* Asegura que no tenga borde por defecto */
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #f57c00;
+}
 
 /* --------- COTIZADOR --------- */
 .cotizador {
@@ -287,6 +343,43 @@ body {
     margin-bottom: 8px;
 }
 
+/* Footer columns and list (capitals) */
+.footer-column {
+    flex: 1 1 220px;
+}
+
+.footer-column h4 {
+    color: #cbd5f5;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+.footer-list li {
+    margin-bottom: 6px;
+}
+
+/* Flag icon: inline SVG sizing and spacing */
+.flag-icon {
+    width: 22px;
+    height: 14px;
+    vertical-align: -2px;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.footer-column .muted {
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
 .footer a {
     color: #38bdf8;
     text-decoration: none;
@@ -323,51 +416,19 @@ body {
     }
 }
 
+@media (max-width: 560px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 18px;
+    }
+    .footer-column {
+        flex: 1 1 auto;
+    }
+}
+
 
 
 /* --- Estilos para la Calculadora de Piscinas --- */
-
-.calculator-box {
-    margin-top: 3rem; /* Espacio de separación de los cuadros de arriba */
-    padding: 2rem;
-    background-color: #3f51b5; /* Fondo azul, ajusta si tienes otro color principal */
-    color: #ffffff; /* Letras blancas para contraste */
-    border-radius: 8px;
-    text-align: center;
-    /* Para que ocupe casi todo el ancho con un pequeño margen */
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.calculator-title {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-}
-
-.calculator-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Estilo para el botón secundario (btn-secondary) que usamos en la caja */
-.btn-secondary {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    background-color: #ff9800; /* Color de acento (naranja) */
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    border: none; /* Asegura que no tenga borde por defecto */
-    cursor: pointer;
-}
-
-.btn-secondary:hover {
-    background-color: #f57c00;
-}
-
 
 /* =======================================================
    ESTILOS DE LA CALCULADORA FUNCIONAL (DARK MODE)
@@ -375,12 +436,15 @@ body {
 
 /* 1. Contenedor Principal de la Calculadora */
 .calculator-form-section {
-    margin-top: 4rem;
-    padding: 2.5rem 2rem;
-    background-color: #020617; /* Fondo oscuro igual al resto de secciones */
-    border: 1px solid #1e293b; /* Borde sutil */
-    border-radius: 20px;
+    margin-top: 2rem;
+    padding: 1.25rem 1rem;
+    background-color: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
     color: #e5e7eb;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Centrar textos de cabecera de esta sección */
@@ -393,14 +457,11 @@ body {
 
 /* 2. El Formulario (Grid Flexible) */
 .calculator-form-section .quote-form {
-    max-width: 700px;
-    margin: 2rem auto 0;
-    /* Usamos Flexbox para acomodar los inputs */
+    max-width: 520px;
+    margin: 1rem auto 0;
     display: flex;
-    flex-wrap: wrap; /* Permite que bajen a la siguiente linea */
-    gap: 15px;
-
-    /* Reseteamos estilos heredados */
+    flex-wrap: wrap;
+    gap: 10px;
     background: transparent;
     border: none;
     padding: 0;
@@ -408,31 +469,30 @@ body {
 
 /* 3. Títulos internos (h4) */
 .calculator-form-section h4 {
-    width: 100%; /* Ocupa toda la fila */
+    width: 100%;
     text-align: center;
-    color: #38bdf8; /* Azul claro */
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+    color: #38bdf8;
+    margin-top: 1rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.95rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.6px;
 }
 
 /* 4. Estilo de Inputs y Selects */
 .calculator-form-section input[type="number"],
 .calculator-form-section select {
-    flex: 1 1 30%; /* Intentan ocupar 1/3 del ancho */
-    min-width: 180px; /* Tamaño mínimo para no verse aplastados en móviles */
-
-    background: #0f172a; /* Fondo azul muy oscuro */
+    flex: 1 1 40%;
+    min-width: 120px;
+    background: #0f172a;
     border: 1px solid #334155;
-    border-radius: 12px;
-    padding: 12px;
+    border-radius: 10px;
+    padding: 10px;
     color: #ffffff;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     text-align: center;
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color 0.2s;
 }
 
 .calculator-form-section input:focus,
@@ -443,32 +503,32 @@ body {
 /* Contenedor especial para dimensiones (Largo, Ancho, Diametro) */
 .campos-dimensiones {
     display: flex;
-    gap: 15px;
-    width: 100%; /* Ocupa toda la fila */
+    gap: 10px;
+    width: 100%;
 }
 
 .campos-dimensiones input {
-    flex: 1; /* Se reparten el espacio equitativamente */
+    flex: 1;
 }
 
 /* 5. Botón de Calcular */
 .calculator-form-section button {
     width: 100%;
-    margin-top: 1.5rem;
-    padding: 14px;
-    font-size: 1.1rem;
+    margin-top: 1rem;
+    padding: 10px;
+    font-size: 1rem;
 }
 
 /* 6. Caja de Resultados */
 .calculator-results {
-    max-width: 700px;
-    margin: 2rem auto 0;
-    padding: 1.5rem;
-    background-color: #1e293b; /* Gris azulado para destacar del fondo negro */
-    border-radius: 12px;
-    border-left: 6px solid #38bdf8; /* Línea de acento a la izquierda */
-    font-size: 1rem;
-    line-height: 1.6;
+    max-width: 520px;
+    margin: 1.25rem auto 0;
+    padding: 1rem;
+    background-color: #1e293b;
+    border-radius: 10px;
+    border-left: 4px solid #38bdf8;
+    font-size: 0.95rem;
+    line-height: 1.5;
     color: #e2e8f0;
 }
 
@@ -486,4 +546,4 @@ body {
 
 
 
-
+/* ---------------------------------------------------*/
